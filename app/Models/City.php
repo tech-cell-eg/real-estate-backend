@@ -18,6 +18,16 @@ class City extends Model
         return $this->hasMany(Area::class);
     }
 
+    public function companies(): HasMany
+    {
+        return $this->hasMany(Company::class);
+    }
+
+    public function inspectors(): HasMany
+    {
+        return $this->hasMany(Inspector::class);
+    }
+
     public function areas(): HasMany
     {
         return $this->hasMany(Area::class);
