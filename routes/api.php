@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,4 @@ Route::get('/user', function (Request $request) {
 
 
 Route::apiResource("properties", PropertyController::class);
+Route::apiResource("offers", OfferController::class);

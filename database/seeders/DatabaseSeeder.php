@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Offer;
 use App\Models\Property;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Property::factory(10)->create();
+        Offer::factory(10)->create();
         $this->call(PropertySeeder::class);
     }
 }
