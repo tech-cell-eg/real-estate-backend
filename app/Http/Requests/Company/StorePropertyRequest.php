@@ -22,15 +22,17 @@ class StorePropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'street' => 'required|string',
-            'region' => 'required|string',
-            'governorate' => 'required|string',
-            'price' => 'required|numeric',
-            'description' => 'required|string',
-            'type' => 'required|string',
-            'area' => 'required|numeric',
-            'images' => 'required|array', // Expecting an array of images
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validate each image
+            "address" => ["required","string"],
+            "city" => ["required","string"],
+            "region" => ["required","string"],
+            "description" => ["required","string"],
+            "area" => ["required", "numeric"],
+            "longitude" => ["required", "numeric"],
+            "latitude" => ["required", "numeric"],
+            "type" => ["required","in:سكني,تجاري,صناعي"],
+            "price" => ["required","numeric"],
+            "images" => ["required","array"], // Expecting an array of images
+            "images.*" => ["image","mimes:jpeg,png,jpg,gif","max:2048"] // Validate each image
         ];
     }
 }

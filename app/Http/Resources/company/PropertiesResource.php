@@ -16,13 +16,15 @@ class PropertiesResource extends JsonResource
     {
         return [
             'id' => $this->id, 
-            'street' => $this->street,
+            'address' => $this->address,
             'region' => $this->region,
-            'governorate' => $this->governorate,
+            'city' => $this->city,
             'price' => $this->price,
             'description' => $this->getShortDescription(),
             'type' => $this->type,
             'area' => $this->area,
+            'longitude' => $this->area,
+            'latitude' => $this->area,
             'image' => $this->images->isNotEmpty() ? $this->images->first()->path : null // Include only the first image path
         ];
     }

@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('street');
-            $table->string('region');
-            $table->string('governorate');
+            $table->bigInteger("owner_id")->nullable();
+            $table->text("address");
+            $table->enum("type", ["سكني", "تجاري", "صناعي"]);
+            $table->float("area");
+            $table->string("city");
+            $table->string("region");
+            $table->text("description");
+            $table->integer("longitude");
+            $table->integer("latitude");
             $table->decimal('price', 10, 2);
-            $table->text('description');
-            $table->string('type');
-            $table->decimal('area', 8, 2);
             $table->timestamps();
         });
     }
