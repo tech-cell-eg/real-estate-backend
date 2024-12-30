@@ -22,15 +22,19 @@ class UpdatePropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'street' => 'sometimes|required|string',
-            'region' => 'sometimes|required|string',
-            'governorate' => 'sometimes|required|string',
-            'price' => 'sometimes|required|numeric',
-            'description' => 'sometimes|required|string',
-            'type' => 'sometimes|required|string',
-            'area' => 'sometimes|required|numeric',
-            'images' => 'sometimes|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            "address" => ["sometimes","required","string"],
+            "city" => ["sometimes","required","string"],
+            "region" => ["sometimes","required","string"],
+            "images" => ["sometimes","required","array"],
+            "description" => ["sometimes","required"],
+            "area" => ["sometimes","required", "numeric"],
+            "longitude" => ["sometimes","required", "numeric"],
+            "latitude" => ["sometimes","required", "numeric"],
+            "type" => ["sometimes","required","in:سكني,تجاري,صناعي"],
+            "price" => ["sometimes","required","numeric"],
+            "images" => ["sometimes","required","array"], // Expecting an array of images
+            "images.*" => ["image","mimes:jpeg,png,jpg,gif","max:2048"] // Validate each image
+
         ];
     }
 }

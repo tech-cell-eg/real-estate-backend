@@ -12,17 +12,23 @@ use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Traits\ApiResponse;
 
 class CompanyPropertyController extends Controller
 {
+    use ApiResponse;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $properties = Property::with('images')->get();
-        return PropertiesResource::collection($properties);
+        $propertiesCollection= PropertiesResource::collection($properties);
+        return $this->success(200, "all properties", $propertiesCollection);
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -30,10 +36,10 @@ class CompanyPropertyController extends Controller
     public function store(StorePropertyRequest $request)
     {
     
-
         $validatedData = $request->validated();
         unset($validatedData['images']);
         $property = Property::create($validatedData);
+        $property["owner_id"] = 1;
         
 
         // Handle image uploads
@@ -44,7 +50,8 @@ class CompanyPropertyController extends Controller
 
         // Reload property with images
         $property->load('images');
-        return response()->json($property, 201);
+        return $this->success(200, "property added successfully!");
+
     }
 
     /**
@@ -53,7 +60,8 @@ class CompanyPropertyController extends Controller
     public function show(string $id)
     {
         $property = Property::with('images')->findOrFail($id);
-        return response()->json($property);
+        return $this->success(200, "property found!", $property);
+
     }
 
     /**
@@ -65,6 +73,8 @@ class CompanyPropertyController extends Controller
     {
             $validatedData = $request->validated();
             unset($validatedData['images']);
+            $property["owner_id"] = 1;
+
             $property->update($validatedData);
     
             // Handle image uploads if any
@@ -85,7 +95,8 @@ class CompanyPropertyController extends Controller
             }
     
             $property->load('images');
-            return $property;
+            return $this->success(200, "property updated successfully!");
+
     }
 
     /**
@@ -102,6 +113,7 @@ class CompanyPropertyController extends Controller
         }
         
         $property->delete();
-        return response()->json(null, 204);
+        return $this->success(200, "property deleted successfully!");
+
     }
 }

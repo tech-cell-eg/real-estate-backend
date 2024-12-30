@@ -7,13 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     use HasFactory;
-    // protected $guarded=[];
 
 
-    public function images()
-    {
-        return $this->hasMany(Image::class);
-    }
+
 
     protected $fillable = [
         "address",
@@ -24,6 +20,12 @@ class Property extends Model
         "area",
         "longitude",
         "latitude",
-        "type"
+        "type",
+        "price",
     ];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }   
 }

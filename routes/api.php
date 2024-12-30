@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Company\CompanyPropertyController;
 use App\Http\Controllers\Company\TermsController;
-use App\Http\Controllers\PropertyController;
 
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientCompanyController;
@@ -33,6 +32,5 @@ Route::apiResource("company/properties", CompanyPropertyController::class);
 Route::apiResource("company/terms", TermsController::class);
 
 
-Route::apiResource("properties", PropertyController::class);
 Route::apiResource("offers", OfferController::class);
 
