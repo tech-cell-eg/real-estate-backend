@@ -44,7 +44,4 @@ trait ApiResponse
             'data' => $data
         ], $status);
     }
-
-
-
 }
