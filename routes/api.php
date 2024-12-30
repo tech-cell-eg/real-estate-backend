@@ -10,6 +10,7 @@ use App\Http\Controllers\API\Auth\AuthCompany\RegisterController as AuthCompanyR
 use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspectorRegisterController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -24,10 +25,6 @@ Route::post('/company/register', AuthCompanyRegisterController::class)->middlewa
 
 Route::post('/inspector/register', AuthInspectorRegisterController::class)->middleware('throttle:5,1');
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 Route::put('/company/profile/{company}', [CompanyProfileController::class, 'update']);
 Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPassword']);
 Route::get('/company/balance', [CompanyProfileController::class, 'showBalance']);
@@ -37,3 +34,4 @@ Route::apiResource("company/terms", TermsController::class);
 
 Route::apiResource("offers", OfferController::class);
 
+Route::apiResource("orders", OrderController::class);

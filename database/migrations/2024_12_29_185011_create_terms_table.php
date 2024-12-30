@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
-            $table->string('information');
-            $table->string('security');
+            $table->text('description');
+            $table->json('information');
+            $table->text('security');
             $table->timestamps();
         });
     }
