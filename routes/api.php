@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Auth\AuthClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\AuthCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspectorRegisterController;
 use App\Http\Controllers\CityAreaController;
+use App\Http\Controllers\Company\CompanyProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
+Route::put('/company/profile/{company}', [CompanyProfileController::class, 'update']);
+Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPassword']);
 Route::apiResource("company/properties", CompanyPropertyController::class);
 Route::apiResource("company/terms", TermsController::class);
 
