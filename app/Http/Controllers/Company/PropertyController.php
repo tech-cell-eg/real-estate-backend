@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-class PropertyController extends Controller
+class CompanyPropertyController extends Controller
 {
     /**
      * Display a listing of the resource.
