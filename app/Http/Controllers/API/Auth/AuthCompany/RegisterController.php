@@ -12,6 +12,9 @@ class RegisterController extends Controller
 {
     use ApiResponse, FileControl;
 
+    /**
+     * @throws \Exception
+     */
     public function __invoke(RegisterCompanyRequest $request)
     {
         $data = $request->validated();

@@ -22,13 +22,13 @@ class RegisterClientCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:clients',
-            'phone' => 'required|string|max:11',
-            'city_id' => 'required|integer|exists:cities,id',
-            'password' => 'required|string|min:8|confirmed',
-            'terms_accepted' => 'required|boolean|accepted',
-            'delegation' => 'required|file|mimes:pdf,jpg,jpeg,png,doc,docx,xls,xlsx|max:2048',
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+            'phone' => ['required', 'string', 'max:11'],
+            'city_id' => ['required', 'integer', 'exists:cities,id'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'terms_accepted' => ['required', 'boolean', 'accepted'],
+            'delegation' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png,doc,docx,xls,xlsx', 'max:2048'],
         ];
     }
 }

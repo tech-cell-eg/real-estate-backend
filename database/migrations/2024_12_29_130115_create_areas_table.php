@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('name');
             $table->timestamps();
         });
-        $citiesAreas = config('CitiesAreas.cities and areas');
+        $citiesAreas = json_decode(file_get_contents(database_path('seeders/CitiesAreas.json')), true);
         foreach ($citiesAreas as $city => $areas) {
             $city = City::where('name', $city)->first();
             foreach ($areas as $area) {
