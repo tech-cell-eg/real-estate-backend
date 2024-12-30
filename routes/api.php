@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientCompanyController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\AuthCompany\RegisterController as AuthCompanyRegisterController;
@@ -34,3 +35,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::apiResource("properties", PropertyController::class);
+Route::apiResource("offers", OfferController::class);
+=======
