@@ -8,5 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     use HasFactory;
-    protected $guarded = ["id", "created_at", "updated_at"];
+    //protected $guarded=[];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+
+    protected $fillable = [
+        "address",
+        "city",
+        "region",
+        "images",
+        "description",
+        "area",
+        "longitude",
+        "latitude",
+        "type"
+    ];
 }
