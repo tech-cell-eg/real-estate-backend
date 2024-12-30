@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Company\CompanyPropertyController;
+use App\Http\Controllers\Company\TermsController;
+use App\Http\Controllers\PropertyController;
+
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientCompanyController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientIndividualController;
@@ -27,13 +31,11 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-
-
-
-
+Route::apiResource("company/properties", CompanyPropertyController::class);
+Route::apiResource("company/terms", TermsController::class);
 
 
 
 Route::apiResource("properties", PropertyController::class);
 Route::apiResource("offers", OfferController::class);
-=======
+
