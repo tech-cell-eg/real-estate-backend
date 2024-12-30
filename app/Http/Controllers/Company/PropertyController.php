@@ -11,6 +11,7 @@ use App\Models\Image;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -55,8 +56,41 @@ class PropertyController extends Controller
         return response()->json($property);
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
 
+    
+    public function update(UpdatePropertyRequest $request, Property $property)
+    {
+            $validatedData = $request->validated();
+            unset($validatedData['images']);
+            $property->update($validatedData);
+    
+            // Handle image uploads if any
+            if ($request->hasFile('images')) {
+                // Optionally, delete existing images
+                if ($property->images->isNotEmpty()) {
+                    foreach ($property->images as $image) {
+                        Storage::disk('public')->delete($image->path);
+                        $image->delete(); // Delete from DB
+                    }
+                }
+    
+                // Store new images
+                foreach ($request->file('images') as $imageFile) {
+                    $path = $imageFile->store('properties', 'public');
+                    Image::create(['property_id' => $property->id, 'path' => $path]);
+                }
+            }
+    
+            $property->load('images');
+            return $property;
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(string $id)
     {
         $property = Property::findOrFail($id);
