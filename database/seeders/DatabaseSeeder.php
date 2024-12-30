@@ -33,5 +33,6 @@ class DatabaseSeeder extends Seeder
         Inspector::factory(10)->create();
         Order::factory(10)->create();
         $this->call(PropertySeeder::class);
+        $this->call(TermSeeder::class);
     }
 }
