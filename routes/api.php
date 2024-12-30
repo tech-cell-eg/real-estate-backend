@@ -30,6 +30,7 @@ Route::get('/user', function (Request $request) {
 
 Route::put('/company/profile/{company}', [CompanyProfileController::class, 'update']);
 Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPassword']);
+Route::get('/company/balance', [CompanyProfileController::class, 'showBalance']);
 Route::apiResource("company/properties", CompanyPropertyController::class);
 Route::apiResource("company/terms", TermsController::class);
 

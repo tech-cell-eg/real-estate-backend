@@ -36,4 +36,10 @@ class Company extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+
+    public function wallet()
+{
+    return $this->hasOne(CompanyWallet::class);
+}
 }
