@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Card;
 use App\Models\Client;
 use App\Models\Company;
 use App\Models\Inspector;
@@ -32,7 +33,10 @@ class DatabaseSeeder extends Seeder
         Company::factory(10)->create();
         Inspector::factory(10)->create();
         Order::factory(10)->create();
-        $this->call(PropertySeeder::class);
-        $this->call(TermSeeder::class);
+        Card::factory(10)->create();
+        $this->call([
+            PropertySeeder::class,
+            TermSeeder::class
+        ]);
     }
 }
