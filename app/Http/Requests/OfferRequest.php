@@ -23,12 +23,12 @@ class OfferRequest extends FormRequest
     {
         return [
             // "file" => "required|file|mimes:pdf|max:10240",
-            "file" => "required",
-            "price" => "required|numeric",
-            "companyName" => "required|string|max:255",
+            "file" => ["required"],
+            "price" => ["required","numeric"],
+            "companyName" => ["required","string","max:255"],
             // "inspectorId" => "required|exists:users,id",
-            "property_id" => "required|exists:properties,id",
-            "state" => "required|string|in:pending,accepted,rejected"
+            "property_id" => ["required","exists:properties,id"],
+            "state" => ["required","string|in:pending,accepted,rejected"]
         ];
     }
 }
