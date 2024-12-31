@@ -11,6 +11,7 @@ use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspec
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,4 @@ Route::apiResource("offers", OfferController::class);
 Route::apiResource("orders", OrderController::class);
 Route::apiResource("cards", CardController::class);
 Route::apiResource("payments", PaymentController::class);
+Route::apiResource("notifications", NotificationController::class);
