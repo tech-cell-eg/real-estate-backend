@@ -13,26 +13,28 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::with("property", "company", "inspector")->get();
+        $orders = Order::with("property", "company", "inspector")
+        ->where("client_id", auth()->user()->id)->get();
         return $this->success(200, "all orders", $orders);
     }
 
     public function store(OrderRequest $request)
     {
-        $request["client_id"] = Auth::user()->id ?? 7;
+        $request["client_id"] = Auth::user()->id;
         $newOrder = Order::create($request->toArray());
         return $this->success(200, "order added successfully!", $newOrder);
     }
 
     public function show($id)
     {
-        $order = Order::with("property", "company", "inspector")->findOrFail($id);
+        $order = Order::with("property", "company", "inspector")
+        ->where("client_id", auth()->user()->id)->findOrFail($id);
         return $this->success(200, "order found!", $order);
     }
 
     public function update(OrderRequest $request, Order $order)
     {
-        $request["client_id"] = Auth::user()->id ?? 7;
+        $request["client_id"] = Auth::user()->id;
         $order->update($request->toArray());
         return $this->success(200, "order updated successfully!", $order);
     }

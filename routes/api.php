@@ -12,6 +12,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -37,3 +38,4 @@ Route::apiResource("offers", OfferController::class);
 
 Route::apiResource("orders", OrderController::class);
 Route::apiResource("cards", CardController::class);
+Route::apiResource("payments", PaymentController::class);
