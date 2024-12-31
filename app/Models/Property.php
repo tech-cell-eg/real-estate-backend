@@ -15,7 +15,6 @@ class Property extends Model
         "address",
         "city",
         "region",
-        "images",
         "description",
         "area",
         "longitude",

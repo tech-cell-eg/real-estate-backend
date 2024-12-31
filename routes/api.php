@@ -9,11 +9,13 @@ use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthComp
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\CityAreaController;
-use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\Company\CompanyPropertyController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
@@ -39,3 +41,5 @@ Route::apiResource("company/terms", TermsController::class);
 Route::apiResource("offers", OfferController::class);
 
 Route::apiResource("orders", OrderController::class);
+Route::apiResource("cards", CardController::class);
+Route::apiResource("payments", PaymentController::class);
