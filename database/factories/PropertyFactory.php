@@ -21,11 +21,11 @@ class PropertyFactory extends Factory
             "address" =>fake()->address(),
             "city" => fake()->city(),
             "region" =>fake()->city(),
-            "images" => fake()->imageUrl(),
             "description" =>fake()->paragraph(),
             "area" => 118,
             "longitude" => 23.45,
             "latitude" => 45.34,
+            "price" => ceil(rand(10,500)),
             "type" => fake()->randomElement(["سكني", "تجاري", "صناعي"]),
             "owner_id" => fake()->randomDigit()
         ];

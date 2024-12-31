@@ -8,6 +8,7 @@ use App\Http\Controllers\API\Auth\AuthClient\RegisterClientCompanyController;
 use App\Http\Controllers\API\Auth\AuthClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\AuthCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspectorRegisterController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\OrderController;
@@ -35,3 +36,4 @@ Route::apiResource("company/terms", TermsController::class);
 Route::apiResource("offers", OfferController::class);
 
 Route::apiResource("orders", OrderController::class);
+Route::apiResource("cards", CardController::class);
