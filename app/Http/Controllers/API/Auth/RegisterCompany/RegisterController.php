@@ -21,11 +21,11 @@ class RegisterController extends Controller
         $data = $request->validated();
         $data['delegation'] = $this->uploadFiles($data['delegation'], 'Delegations')[0];
         $this->emailUniqueCheck($data['email']);
-        $client = Company::create($data);
-        $token = $client->createToken('API Token')->plainTextToken;
+        $company = Company::create($data);
+        $token = $company->createToken("company API Token")->plainTextToken;
         return $this->success(200, 'Company created successfully', [
             'token' => $token,
-            'client' => $client
+            'company' => $company
         ]);
     }
 }
