@@ -11,10 +11,14 @@ use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspec
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\ProjectsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+Route::get('company/projects/search/{status}',[ProjectsController::class,'search']);
+
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
 Route::get('/cities/{city}/areas', [CityAreaController::class, 'CityAreas']);
@@ -35,6 +39,8 @@ Route::apiResource("company/terms", TermsController::class);
 
 
 Route::apiResource("offers", OfferController::class);
+
+Route::apiResource("company/projects", ProjectsController::class);
 
 Route::apiResource("orders", OrderController::class);
 Route::apiResource("cards", CardController::class);
