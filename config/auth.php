@@ -43,6 +43,14 @@ return [
         'api-client' => [
             'driver' => 'token',
             'provider' => 'clients',
+        ],
+        'api-company' => [
+            'driver' => 'token',
+            'provider' => 'companies',
+        ],
+        'api-inspector' => [
+            'driver' => 'token',
+            'provider' => 'inspectors',
         ]
     ],
 
@@ -72,6 +80,16 @@ return [
         'clients' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Client::class),
+        ],
+
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Company::class),
+        ],
+
+        'inspectors' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Inspector::class),
         ],
 
         // 'users' => [
