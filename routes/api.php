@@ -11,6 +11,8 @@ use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspec
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\ProjectCommentsController;
+use App\Http\Controllers\Company\ProjectNoteController;
 use App\Http\Controllers\Company\ProjectsController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,11 @@ Route::apiResource("orders", OrderController::class);
 
 Route::apiResource("company/projects", ProjectsController::class);
 Route::get('projects/search',[ProjectsController::class,'search']);
+Route::post('projects/note',[ProjectNoteController::class,'addNote']);
+Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
+Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
+
+
 
 
 Route::apiResource("cards", CardController::class);
