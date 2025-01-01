@@ -41,15 +41,15 @@ return [
             'provider' => 'users',
         ],
         'api-client' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'clients',
         ],
         'api-company' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'companies',
         ],
         'api-inspector' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'inspectors',
         ]
     ],
@@ -75,21 +75,25 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+            'table' => 'users',
         ],
 
         'clients' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Client::class),
+            'table' => 'clients',
         ],
 
         'companies' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Company::class),
+            'table' => 'companies',
         ],
 
         'inspectors' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Inspector::class),
+            'table' => 'inspectors',
         ],
 
         // 'users' => [

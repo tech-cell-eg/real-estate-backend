@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return $this->failed(422, "Invalid credentials");
         }
-        $token = $user->createToken('API Token')->plainTextToken;
+        $token = $user->createToken("{$userType} API Token")->plainTextToken;
         return $this->success(200, "User type: {$userType} logged in successfully", [
             'token' => $token,
             $userType => $user

@@ -19,10 +19,10 @@ class RegisterClientIndividualController extends Controller
         $data['type'] = 'individual';
         $this->emailUniqueCheck($data['email']);
         $client = Client::create($data);
-        $token = $client->createToken('API Token')->plainTextToken;
+        $token = $client->createToken("client API Token")->plainTextToken;
         return $this->success(200, 'Client Individual created successfully', [
             'token' => $token,
-            'client' => $client
+            'client individual' => $client
         ]);
     }
 }

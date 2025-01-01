@@ -23,10 +23,10 @@ class RegisterController extends Controller
         $data['delegation'] = $this->uploadFiles($data['delegation'], 'Delegations')[0];
         $this->emailUniqueCheck($data['email']);
         $client = Client::create($data);
-        $token = $client->createToken('API Token')->plainTextToken;
+        $token = $client->createToken("client API Token")->plainTextToken;
         return $this->success(200, 'Client Company created successfully', [
             'token' => $token,
-            'client' => $client
+            'client company' => $client
         ]);
     }
 }
