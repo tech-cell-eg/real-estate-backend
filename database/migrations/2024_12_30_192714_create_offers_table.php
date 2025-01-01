@@ -12,13 +12,12 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->string("price");
+            $table->foreignId("client_id")->constrained();
             $table->foreignId("property_id")->constrained();
-            // i will replace it with company id later
-            $table->string("companyName");
-            // i will make it foreign key later
-            $table->bigInteger("inspectorId")->default(1);
-            $table->enum("state", ["accepted", "rejected", "pending"])->default("pending");
-            $table->string("file");
+            $table->foreignId("company_id")->constrained();
+            $table->foreignId("inspector_id")->constrained()->nullable();
+            $table->enum("status", ["accepted", "rejected", "pending"])->default("pending");
+            $table->text("file_path");
             $table->timestamps();
         });
     }

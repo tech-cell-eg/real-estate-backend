@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Property::factory(10)->create();
-        Offer::factory(10)->create();
         Client::factory(10)->create();
         Company::factory(10)->create();
         Inspector::factory(10)->create();
+        Offer::factory(10)->create();
         Order::factory(10)->create();
         Card::factory(10)->create();
         Payment::factory(10)->create();
