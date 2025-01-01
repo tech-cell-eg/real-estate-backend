@@ -9,13 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderObserver
 {
-    /**
-     * Handle the Order "created" event.
-     */
+
     public function created(Order $order): void
     {
-        $clientId = Auth::user()->id;
-        $client = Client::find($clientId);
+        $client = Client::find(auth('api-client')->id());
 
         $data["title"] = "طلب جديد";
         $data["message"] = "لقد تم اضافة طلب جديد الى قائمة الطلبات";
@@ -29,8 +26,7 @@ class OrderObserver
      */
     public function updated(Order $order): void
     {
-        $clientId = Auth::user()->id;
-        $client = Client::find($clientId);
+        $client = Client::find(auth('api-client')->id());
 
         if($order->status == "accepted") {
             $data["title"] = "طلب مقبول";
@@ -45,29 +41,5 @@ class OrderObserver
         }
 
         $client->notify(new ClientNotification($data));
-    }
-
-    /**
-     * Handle the Order "deleted" event.
-     */
-    public function deleted(Order $order): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Order "restored" event.
-     */
-    public function restored(Order $order): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Order "force deleted" event.
-     */
-    public function forceDeleted(Order $order): void
-    {
-        //
     }
 }
