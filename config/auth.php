@@ -51,6 +51,10 @@ return [
         'api-inspector' => [
             'driver' => 'sanctum',
             'provider' => 'inspectors',
+        ],
+        'api-reviewer' => [
+            'driver' => 'sanctum',
+            'provider' => 'reviewers',
         ]
     ],
 
@@ -94,6 +98,12 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Inspector::class),
             'table' => 'inspectors',
+        ],
+
+        'reviewers' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Reviewer::class),
+            'table' => 'reviewers',
         ],
 
         // 'users' => [

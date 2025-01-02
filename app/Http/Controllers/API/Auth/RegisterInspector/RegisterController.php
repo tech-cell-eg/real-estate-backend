@@ -19,10 +19,10 @@ class RegisterController extends Controller
     public function __invoke(RegisterInspectorRequest $request)
     {
         $data = $request->validated();
-        $data['delegation'] = $this->uploadFiles($data['delegation'], 'Delegations')[0];
+        $data['certificate'] = $this->uploadFiles($data['certificate'], 'Certifications/Inspectors')[0];
         $inspector = Inspector::create($data);
         $token = $inspector->createToken("inspector API Token")->plainTextToken;
-        return $this->success(200, 'Company created successfully', [
+        return $this->success(200, 'Inspector created successfully', [
             'token' => $token,
             'inspector' => $inspector
         ]);
