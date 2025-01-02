@@ -14,7 +14,7 @@ class UniqueEmailRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $models = ['App\Models\Client', 'App\Models\Company', 'App\Models\Inspector'];
+        $models = ['App\Models\Client', 'App\Models\Company', 'App\Models\Inspector', 'App\Models\Reviewer'];
         foreach ($models as $model) {
             if ($model::where('email', $value)->exists()) {
                 $fail('The email address is already in use.');

@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Client;
 use App\Models\Company;
 use App\Models\Inspector;
+use App\Models\Reviewer;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 
@@ -12,7 +13,7 @@ trait EmailExistTrait
 {
     use ApiResponse;
 
-    public array $models = [Company::class, Client::class, Inspector::class];
+    public array $models = [Company::class, Client::class, Inspector::class, Reviewer::class];
     public Authenticatable|JsonResponse|null $user;
     public string $userType;
 
