@@ -8,7 +8,11 @@ use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClien
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
+use App\Http\Controllers\API\Profile\UpdatePasswordController;
+use App\Http\Controllers\API\Profile\UpdateProfileController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
+use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\Company\CompanyPropertyController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
@@ -31,6 +35,8 @@ Route::post('/forget-password', ForgetPasswordController::class)->middleware('th
 Route::post('/reset-password', ResetPasswordController::class);
 Route::post('/login', LoginController::class);
 Route::post('/logout', LogoutController::class)->middleware(['auth:sanctum']);
+Route::post('/update-profile', UpdateProfileController::class)->middleware(['auth:sanctum']);
+Route::post('/update-password', UpdatePasswordController::class)->middleware(['auth:sanctum']);
 
 Route::put('/company/profile/{company}', [CompanyProfileController::class, 'update']);
 Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPassword']);
