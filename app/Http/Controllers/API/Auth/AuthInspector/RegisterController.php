@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $data['delegation'] = $this->uploadFiles($data['delegation'], 'Delegations')[0];
         $client = Inspector::create($data);
         $token = $client->createToken('API Token')->plainTextToken;
-        return $this->success(200, 'Company created successfully', [
+        return $this->success(200, 'Inspector created successfully', [
             'token' => $token,
             'client' => $client
         ]);

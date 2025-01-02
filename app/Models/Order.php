@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -42,4 +44,12 @@ class Order extends Model
     {
         return $this->hasMany(ProjectComment::class);
     }
+
+    public function scopeFilters(Builder $builder,$filters){
+
+        $builder->when($filters['status'] ?? false, function ($query, $status) {
+            return $query->where('status', $status);
+        });
+    }
+
 }

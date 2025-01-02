@@ -11,13 +11,12 @@ use Illuminate\Http\Request;
 class ProjectCommentsController extends Controller
 {
     use ApiResponse;
-    public function addComment(StoreProjectCommentsRequest $request){
-        $validatedData = $request->validated();
-        $comment=ProjectComment::create($validatedData);
+    public function store(StoreProjectCommentsRequest $request){
+        $comment=ProjectComment::create($request->validated());
         return $this->success(200,'Comment Added Successfully');
     }
 
-    public function getComments(int $projectId){
+    public function show(int $projectId){
         $comments=ProjectComment::where('order_id',$projectId)->get();
         return $this->success(200,'Notes Retrieved Successfully',$comments);
         }

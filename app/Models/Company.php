@@ -43,4 +43,9 @@ class Company extends Authenticatable
 {
     return $this->hasOne(CompanyWallet::class);
 }
+
+public function inspectors()
+{
+    return $this->hasMany(Inspector::class);
+}
 }

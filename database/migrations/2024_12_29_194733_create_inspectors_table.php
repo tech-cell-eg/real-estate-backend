@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('phone');
             $table->decimal('inspection_fees', 8, 2);
             $table->string('national_id')->unique();
-            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
-            $table->foreignId('area_id_1')->constrained('areas')->cascadeOnDelete();
-            $table->foreignId('area_id_2')->constrained('areas')->cascadeOnDelete();
-            $table->foreignId('area_id_3')->constrained('areas')->cascadeOnDelete();
+            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('area_id_1')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('area_id_2')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('area_id_3')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('password');
             $table->string('delegation')->nullable();
             $table->boolean('terms_accepted')->default(true);

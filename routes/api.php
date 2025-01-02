@@ -11,6 +11,8 @@ use App\Http\Controllers\API\Auth\AuthInspector\RegisterController as AuthInspec
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\inspector\InspectorController;
+use App\Http\Controllers\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\Company\ProjectCommentsController;
 use App\Http\Controllers\Company\ProjectNoteController;
 use App\Http\Controllers\Company\ProjectsController;
@@ -41,12 +43,12 @@ Route::apiResource("offers", OfferController::class);
 Route::apiResource("orders", OrderController::class);
 
 Route::apiResource("company/projects", ProjectsController::class);
-Route::get('projects/search',[ProjectsController::class,'search']);
-Route::post('projects/note',[ProjectNoteController::class,'addNote']);
-Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
-Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
-
-
+Route::post('projects/note',[ProjectNoteController::class,'store']);
+Route::post('projects/comments',[ProjectCommentsController::class,'store']);
+Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'show']);
+Route::get('company/inspectors',[InspectorController::class,'index']);
+Route::apiResource("company/inspectors", InspectorController::class);
+Route::put("projects/inspectors/{id}", [InspectorProjectController::class,'update']);
 
 
 Route::apiResource("cards", CardController::class);

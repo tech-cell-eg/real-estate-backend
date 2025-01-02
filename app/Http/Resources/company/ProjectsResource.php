@@ -5,7 +5,7 @@ namespace App\Http\Resources\company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PropertiesResource extends JsonResource
+class ProjectsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,22 +16,25 @@ class PropertiesResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'address' => $this->address,
-            'region' => $this->region,
-            'city' => $this->city,
-            'price' => $this->price,
-            'description' => $this->getShortDescription(100),
-            'type' => $this->type,
-            'area' => $this->area,
-            'longitude' => $this->longitude,
-            'latitude' => $this->latitude,
-            'image' => $this->images->isNotEmpty() ? $this->images->first()->path : null // Include only the first image path
+            'status' => $this->status,
+            'property' => new PropertiesResource($this->property),
         ];
     }
 
+    /**
+     * Shortens the description to a specific length.
+     *
+     * @param int $length
+     * @return string
+     */
+    
 
-
-
+    /**
+     * Add pagination meta data.
+     *
+     * @param $paginated
+     * @return array
+     */
     public static function addPaginationMeta($paginated)
     {
         return [
