@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\API\AuthClient;
 
+use App\Rules\UniqueEmailRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterClientCompanyRequest extends FormRequest
@@ -23,7 +24,7 @@ class RegisterClientCompanyRequest extends FormRequest
     {
         return [
             'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:clients'],
+            'email' => ['required', 'string', 'email', 'max:255', new UniqueEmailRule],
             'phone' => ['required', 'string', 'max:11'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
