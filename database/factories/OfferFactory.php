@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
+use App\Models\Company;
+use App\Models\Inspector;
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,12 +21,13 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            "file" => fake()->word() . '.pdf',
-            "price" => rand(10,1000),
-            "companyName" => fake()->company(),
-            "inspectorId" => fake()->randomDigit(),
+            "file_path" => "uploads/" . fake()->word() . '.pdf',
+            "price" => fake()->numerify("###000"),
+            "client_id" => Client::inRandomOrder()->first()->id,
+            "company_id" => Company::inRandomOrder()->first()->id,
+            "inspector_id" => Inspector::inRandomOrder()->first()->id,
             "property_id" => Property::inRandomOrder()->first()->id,
-            "state" => fake()->randomElement(["accepted", "rejected", "pending"])
+            "status" => fake()->randomElement(["accepted", "rejected", "pending"])
         ];
     }
 }
