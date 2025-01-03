@@ -26,7 +26,10 @@ class Inspector extends Authenticatable
         'password',
         'delegation',
         'terms_accepted',
-        'company_id'
+        'company_id',
+        'experience',
+        'years_of_experience',
+        'bio'
     ];
 
     public function city(): BelongsTo

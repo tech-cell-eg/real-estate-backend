@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Inspector;
 use App\Models\Offer;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Property;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -28,12 +29,13 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Property::factory(10)->create();
-        Offer::factory(10)->create();
         Client::factory(10)->create();
         Company::factory(10)->create();
         Inspector::factory(10)->create();
+        Offer::factory(10)->create();
         Order::factory(10)->create();
         Card::factory(10)->create();
+        Payment::factory(10)->create();
         $this->call([
             PropertySeeder::class,
             TermSeeder::class

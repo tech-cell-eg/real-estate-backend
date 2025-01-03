@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Company\Inspector;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InspectorRequest extends FormRequest
+class PaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,11 @@ class InspectorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => [ 'string', 'email', 'max:255', 'unique:companies,email,'],
-            // . $this->user()->id
-
+            'price' => ['required', 'numeric', 'min:0'],
+            'card_id' => ['required', 'exists:cards,id'],
+            'property_id' => ['required', 'exists:properties,id'],
+            'company_id' => ['required', 'exists:companies,id'],
+            'paid' => ['boolean']
         ];
     }
 }

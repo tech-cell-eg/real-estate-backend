@@ -19,7 +19,8 @@ class Order extends Model
         "inspector_id",
         "status",
         "companyRate",
-        "inspectorsRate"
+        "inspectorsRate",
+        "reviewer_id"
     ];
 
     function property() {

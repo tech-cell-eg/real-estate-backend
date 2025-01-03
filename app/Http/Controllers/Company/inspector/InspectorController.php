@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Company\inspector;
 use App\Http\Requests\API\AuthInspector\RegisterInspectorRequest;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Company\Inspector\InspectorRequest;
+use App\Http\Requests\Company\Inspector\UpdateTeamRequest;
 use App\Models\Inspector;
 use App\Traits\ApiResponse;
 use App\Traits\FileControl;
@@ -15,7 +15,7 @@ class InspectorController extends Controller
     use ApiResponse, FileControl;
     public function index(){
         $id=1;
-        $inspectors = Inspector::select('id', 'username')->where('company_id',$id)->get();
+        $inspectors = Inspector::with('city')->select('id', 'username','city_id')->where('company_id',$id)->get();
         return $this->success(200,"All inspectors data",$inspectors);
     }
 
@@ -36,7 +36,7 @@ class InspectorController extends Controller
             }
 
 
-        public function update(InspectorRequest $request, $id){
+        public function update(UpdateTeamRequest $request, $id){
             $inspector = Inspector::find($id);
             if (!$inspector) {
                 return $this->failed(404, "Inspector not found");
