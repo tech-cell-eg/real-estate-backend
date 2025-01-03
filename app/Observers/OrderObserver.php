@@ -18,7 +18,7 @@ class OrderObserver
         $data["message"] = "لقد تم اضافة طلب جديد الى قائمة الطلبات";
         $data["this"] = $order;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
     /**

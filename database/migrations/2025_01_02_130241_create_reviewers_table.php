@@ -12,19 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inspectors', function (Blueprint $table) {
+        Schema::create('reviewers', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->decimal('inspection_fees', 8, 2);
+            $table->decimal('review_fees', 8, 2);
             $table->string('national_id')->unique();
-            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('area_id_1')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('area_id_2')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('area_id_3')->constrained('areas')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
             $table->string('password');
-            $table->string('delegation')->nullable();
+            $table->string('certificate')->nullable();
             $table->boolean('terms_accepted')->default(true);
             $table->timestamps();
         });
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inspectors');
+        Schema::dropIfExists('reviewers');
     }
 };

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("client_id")->constrained()->nullable();
-            $table->foreignId("property_id")->constrained()->nullable();
-            $table->foreignId("company_id")->constrained()->nullable();
-            $table->foreignId("inspector_id")->constrained()->nullable();
+            $table->foreignId("client_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("property_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("company_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("inspector_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+
             $table->enum("status", ["accepted", "rejected", "pending"])
             ->default("pending");
             $table->enum("companyRate", [1,2,3,4,5])->nullable();

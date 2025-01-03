@@ -3,24 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Company extends Authenticatable
+class Reviewer extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\ReviewerFactory> */
     use HasApiTokens, Notifiable, HasFactory;
 
     protected $fillable = [
         'username',
         'email',
         'phone',
+        'review_fees',
         'city_id',
-        'tax_number',
+        'national_id',
         'password',
-        'delegation',
+        'certificate',
         'terms_accepted',
+        'company_id'
     ];
 
     public function city(): BelongsTo
@@ -37,15 +40,4 @@ class Company extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
-
-
-    public function wallet()
-{
-    return $this->hasOne(CompanyWallet::class);
-}
-
-public function inspectors()
-{
-    return $this->hasMany(Inspector::class);
-}
 }
