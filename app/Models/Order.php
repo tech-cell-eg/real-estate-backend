@@ -31,4 +31,15 @@ class Order extends Model
     function inspector() {
         return $this->belongsTo(Inspector::class);
     }
+
+
+    public function notes()
+    {
+        return $this->hasMany(ProjectNote::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(ProjectComment::class);
+    }
 }
