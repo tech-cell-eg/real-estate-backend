@@ -17,6 +17,11 @@ use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\Company\CompanyPropertyController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\ProjectCommentsController;
+use App\Http\Controllers\Company\ProjectNoteController;
+use App\Http\Controllers\Company\ProjectsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -48,6 +53,16 @@ Route::apiResource("company/terms", TermsController::class);
 Route::apiResource("offers", OfferController::class);
 
 Route::apiResource("orders", OrderController::class);
+
+Route::apiResource("company/projects", ProjectsController::class);
+Route::get('projects/search',[ProjectsController::class,'search']);
+Route::post('projects/note',[ProjectNoteController::class,'addNote']);
+Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
+Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
+
+
+
+
 Route::apiResource("cards", CardController::class);
 Route::apiResource("payments", PaymentController::class);
 Route::apiResource("notifications", NotificationController::class);
