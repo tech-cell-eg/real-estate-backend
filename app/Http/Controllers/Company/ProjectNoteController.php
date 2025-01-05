@@ -12,9 +12,8 @@ use Illuminate\Http\Request;
 class ProjectNoteController extends Controller
 {
     use ApiResponse;
-    public function addNote(StoreNoteRequest $request){
-        $validatedData = $request->validated();
-        $note=ProjectNote::create($validatedData);
+    public function store(StoreNoteRequest $request){
+        $note=ProjectNote::create($request->validated);
         return $this->success(200,'Note Added Successfully');
     }
 }
