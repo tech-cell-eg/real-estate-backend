@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualControl
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
+use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\API\Profile\UpdatePasswordController;
 use App\Http\Controllers\API\Profile\UpdateProfileController;
@@ -38,6 +39,7 @@ Route::post('/client/register-individual', RegisterClientIndividualController::c
 Route::post('/client/register-company', AuthClientCompanyRegisterController::class)->middleware('throttle:5,1');
 Route::post('/company/register', AuthCompanyRegisterController::class)->middleware('throttle:5,1');
 Route::post('/inspector/register', AuthInspectorRegisterController::class)->middleware('throttle:5,1');
+Route::post('/reviewer/register', AuthReviewerRegisterController::class);
 Route::post('/forget-password', ForgetPasswordController::class)->middleware('throttle:5,1');
 Route::post('/reset-password', ResetPasswordController::class);
 Route::post('/login', LoginController::class);
@@ -71,7 +73,14 @@ Route::put("company/assign/inspectors/", [InspectorCompanyController::class,'upd
 
 
 
-Route::apiResource("cards", CardController::class);
+Route::get('projects/search',[ProjectsController::class,'search']);
+Route::post('projects/note',[ProjectNoteController::class,'addNote']);
+Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
+Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
+
+
+
+
 Route::apiResource("cards", CardController::class);
 Route::apiResource("payments", PaymentController::class);
 Route::apiResource("notifications", NotificationController::class);

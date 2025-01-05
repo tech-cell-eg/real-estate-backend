@@ -24,7 +24,7 @@ class Inspector extends Authenticatable
         'area_id_2',
         'area_id_3',
         'password',
-        'delegation',
+        'certificate',
         'terms_accepted',
         'company_id',
         'experience',
