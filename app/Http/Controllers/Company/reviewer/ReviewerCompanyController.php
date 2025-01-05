@@ -7,6 +7,7 @@ use App\Http\Requests\Company\Reviewer\ReviewerProjectRequest;
 use App\Models\Reviewer;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewerCompanyController extends Controller
 {
@@ -14,7 +15,7 @@ class ReviewerCompanyController extends Controller
     public function update(Request $request)  {
         $reviewerId = $request->query('reviewer_id');
         $reviewer = Reviewer::findOrFail($reviewerId);
-        $companyId = 1; 
+        $companyId=Auth::user()->id; 
         $reviewer->update(['company_id' => $companyId]);
 
         return $this->success(200,'Reviewer Assigned to the company successfully');

@@ -24,6 +24,7 @@ class Reviewer extends Authenticatable
         'certificate',
         'terms_accepted',
         'company_id'
+
     ];
 
     public function city(): BelongsTo

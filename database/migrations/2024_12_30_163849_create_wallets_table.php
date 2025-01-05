@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_wallets', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('client_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('inspector_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('reviewer_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->decimal('current_balance', 10, 2)->default(0); 
             $table->decimal('outstanding_balance', 10, 2)->default(0); 
             $table->timestamps();
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_wallet');
+        Schema::dropIfExists('wallets');
     }
 };

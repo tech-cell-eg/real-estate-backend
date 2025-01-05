@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Inspector;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InspectorCompanyController extends Controller
 {
@@ -13,7 +14,7 @@ class InspectorCompanyController extends Controller
     public function update(Request $request)  {
         $inspectorId = $request->query('inspector_id');
         $inspector = Inspector::findOrFail($inspectorId);
-        $companyId = 1; 
+        $companyId=Auth::user()->id;
         $inspector->update(['company_id' => $companyId]);
         return $this->success(200,'Inspector Assigned to the company successfully');
     }

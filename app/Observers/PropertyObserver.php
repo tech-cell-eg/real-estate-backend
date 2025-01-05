@@ -18,7 +18,7 @@ class PropertyObserver
         $data["message"] = "تم اضافة عقار جديد";
         $data["this"] = $property;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
     public function updated(Property $property): void
@@ -29,7 +29,7 @@ class PropertyObserver
         $data["message"] = "لقد تم تحديث بيانات العقار رقم $property->id";
         $data["this"] = $property;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
     public function deleted(Property $property): void
@@ -40,7 +40,7 @@ class PropertyObserver
         $data["message"] = "لقد تم حذف العقار رقم $property->id";
         $data["this"] = $property;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
 }

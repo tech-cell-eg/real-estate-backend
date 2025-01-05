@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('review_fees', 8, 2);
             $table->string('national_id')->unique();
             $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('password');
             $table->string('certificate')->nullable();
             $table->boolean('terms_accepted')->default(true);

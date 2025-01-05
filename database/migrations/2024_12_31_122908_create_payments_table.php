@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId("card_id")->constrained();
-            $table->foreignId("property_id")->constrained();
-            $table->foreignId("client_id")->constrained();
-            $table->foreignId("company_id")->constrained();
+            $table->unsignedBigInteger('from_id'); 
+            $table->string('from_type');
+            $table->unsignedBigInteger('to_id');
+            $table->string('to_type'); 
             $table->string("price");
             $table->boolean("paid")->default(1);
+            $table->foreignId('project_id')->nullable()->constrained('projects')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

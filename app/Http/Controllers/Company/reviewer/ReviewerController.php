@@ -10,12 +10,13 @@ use App\Traits\ApiResponse;
 use App\Traits\FileControl;
 use Illuminate\Http\Request;
 use App\Traits\AuthUserTrait;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewerController extends Controller
 {
     use ApiResponse, FileControl;
     public function index(){
-        $id=1;
+        $id=Auth::user()->id;
         $reviewers = Reviewer::with('city')->select('id', 'username','city_id')->where('company_id',$id)->get();
         return $this->success(200,"All Reviewers data",$reviewers);
     }
@@ -23,7 +24,7 @@ class ReviewerController extends Controller
     public function store(RegisterReviewerRequest $request){
         $data = $request->validated();
         $data['certificate'] = $this->uploadFiles($data['certificate'], 'Certifications/Reviewers')[0];
-        $data['company_id'] = 1;
+        $data['company_id'] = Auth::user()->id;;
         $reviewer = Reviewer::create($data);
 
         return $this->success(201,"Reviewer created successfully",$reviewer);

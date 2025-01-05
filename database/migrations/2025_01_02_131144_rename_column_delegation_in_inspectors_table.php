@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reviewers', function (Blueprint $table) {
-            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
-
+        Schema::table('inspectors', function (Blueprint $table) {
+            $table->renameColumn('delegation', 'certificate');
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('reviewers', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
-            $table->dropColumn('company_id');
+        Schema::table('inspectors', function (Blueprint $table) {
+            //
         });
     }
 };

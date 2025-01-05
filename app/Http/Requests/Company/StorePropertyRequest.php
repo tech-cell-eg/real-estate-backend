@@ -32,7 +32,9 @@ class StorePropertyRequest extends FormRequest
             "type" => ["required","in:سكني,تجاري,صناعي"],
             "price" => ["required","numeric"],
             "images" => ["required","array"], // Expecting an array of images
-            "images.*" => ["image","mimes:jpeg,png,jpg,gif","max:2048"] // Validate each image
+            "images.*" => ["image","mimes:jpeg,png,jpg,gif","max:2048"], // Validate each image
+            // 'owner_id'=>['required','exists:clients,id']
+
         ];
     }
 }
