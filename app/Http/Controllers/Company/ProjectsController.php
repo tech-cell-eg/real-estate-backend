@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\company\ProjectsResource;
+use App\Http\Resources\company\AllProjectsResorce;
+use App\Http\Resources\company\ProjectCollection;
+use App\Http\Resources\company\ShowProjectsResorce;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
@@ -36,3 +39,5 @@ class ProjectsController extends Controller
 
 
 }
+
+ 

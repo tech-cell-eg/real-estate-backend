@@ -14,6 +14,10 @@ use App\Http\Controllers\API\Profile\UpdateProfileController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\inspector\InspectorController;
 use App\Http\Controllers\Company\inspector\InspectorProjectController;
+use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\ProjectCommentsController;
+use App\Http\Controllers\Company\ProjectNoteController;
+use App\Http\Controllers\Company\ProjectsController;
 use App\Http\Controllers\Company\CompanyPropertyController;
 use App\Http\Controllers\Company\inspector\InspectorCompanyController;
 use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
@@ -22,10 +26,6 @@ use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CardController;
-use App\Http\Controllers\Company\CompanyProfileController;
-use App\Http\Controllers\Company\ProjectCommentsController;
-use App\Http\Controllers\Company\ProjectNoteController;
-use App\Http\Controllers\Company\ProjectsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -74,7 +74,14 @@ Route::put("company/assign/inspectors/", [InspectorCompanyController::class,'upd
 
 
 
-Route::apiResource("cards", CardController::class);
+Route::get('projects/search',[ProjectsController::class,'search']);
+Route::post('projects/note',[ProjectNoteController::class,'addNote']);
+Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
+Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
+
+
+
+
 Route::apiResource("cards", CardController::class);
 Route::apiResource("payments", PaymentController::class);
 Route::apiResource("notifications", NotificationController::class);

@@ -17,6 +17,13 @@ class ProjectCommentsController extends Controller
     }
 
     public function show(int $projectId){
+    public function addComment(StoreProjectCommentsRequest $request){
+        $validatedData = $request->validated();
+        $comment=ProjectComment::create($validatedData);
+        return $this->success(200,'Comment Added Successfully');
+    }
+
+    public function getComments(int $projectId){
         $comments=ProjectComment::where('order_id',$projectId)->get();
         return $this->success(200,'Notes Retrieved Successfully',$comments);
         }

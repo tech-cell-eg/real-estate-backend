@@ -12,6 +12,7 @@ class ProjectComment extends Model
     protected $fillable = ['order_id', 'comment'];
 
     protected $hidden = ['created_at','updated_at'];
+
     public function project()
     {
         return $this->belongsTo(Order::class);
