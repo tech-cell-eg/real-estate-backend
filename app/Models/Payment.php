@@ -26,4 +26,8 @@ class Payment extends Model
     function property() {
         return $this->belongsTo(Property::class);
     }
+
+    function client() {
+        return $this->belongsTo(Client::class);
+    }
 }

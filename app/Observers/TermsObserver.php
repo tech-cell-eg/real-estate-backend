@@ -17,7 +17,7 @@ class TermsObserver
         $data["message"] = "لقد حدث تغيير في الشروط والاحكام";
         $data["this"] = $terms;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
 }

@@ -40,6 +40,6 @@ class OrderObserver
             $data["this"] = $order;
         }
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 }

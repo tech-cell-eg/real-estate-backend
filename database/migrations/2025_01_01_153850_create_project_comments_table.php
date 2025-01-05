@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('project_comments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained()
-            ->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('project_id')->nullable()->constrained('projects')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('inspector_id')->nullable()->constrained('inspectors')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('reviewer_id')->nullable()->constrained('reviewers')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('comment');
             $table->timestamps();
         });

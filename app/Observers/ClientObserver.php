@@ -14,7 +14,7 @@ class ClientObserver
         $data["message"] = "يمكنك مشاهدة جميع التنبيهات من هنا";
         $data["this"] = $client;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
     public function updated(Client $client): void
@@ -23,7 +23,7 @@ class ClientObserver
         $data["message"] = "لقد تم تحديث بيانات الحساب";
         $data["this"] = $client;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
 }

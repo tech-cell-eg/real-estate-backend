@@ -20,7 +20,7 @@ class PaymentObserver
         $data["message"] = "تم اضافة فاتورة جديدة الى قائمة المدفوعات";
         $data["this"] = $payment;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
 }

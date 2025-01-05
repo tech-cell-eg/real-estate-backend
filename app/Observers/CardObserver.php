@@ -18,7 +18,7 @@ class CardObserver
         $data["message"] = "لقد تم اضافة بطاقة مصرفية جديدة ";
         $data["this"] = $card;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 
     public function deleted(Card $card): void
@@ -29,6 +29,6 @@ class CardObserver
         $data["message"] = "لقد تم حذف بطاقة مصرفية من حسابك ";
         $data["this"] = $card;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 }

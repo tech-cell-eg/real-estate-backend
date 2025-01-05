@@ -13,7 +13,7 @@ class ProjectNoteController extends Controller
 {
     use ApiResponse;
     public function store(StoreNoteRequest $request){
-        $note=ProjectNote::create($request->validated);
+        $note=ProjectNote::create($request->validated());
         return $this->success(200,'Note Added Successfully');
     }
 }

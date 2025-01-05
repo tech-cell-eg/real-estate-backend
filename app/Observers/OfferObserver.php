@@ -18,6 +18,6 @@ class OfferObserver
         $data["message"] = "لقد تم اضافة عرض جديد الى قائمة العروض";
         $data["this"] = $offer;
 
-        $client->notify(new ClientNotification($data));
+        // $client->notify(new ClientNotification($data));
     }
 }

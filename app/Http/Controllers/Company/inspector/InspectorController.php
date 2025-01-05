@@ -9,20 +9,21 @@ use App\Models\Inspector;
 use App\Traits\ApiResponse;
 use App\Traits\FileControl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InspectorController extends Controller
 {
     use ApiResponse, FileControl;
     public function index(){
-        $id=1;
-        $inspectors = Inspector::with('city')->select('id', 'username','city_id')->where('company_id',$id)->get();
+        $companyId=Auth::user()->id;
+        $inspectors = Inspector::with('city')->select('id', 'username','city_id')->where('company_id',$companyId)->get();
         return $this->success(200,"All inspectors data",$inspectors);
     }
 
     public function store(RegisterInspectorRequest $request){
         $data = $request->validated();
-        $data['delegation'] = $this->uploadFiles($data['delegation'], 'Delegations')[0];
-        $data['company_id'] = 1;
+        $data['certificate'] = $this->uploadFiles($data['certificate'], 'certificate')[0];
+        $data['company_id'] = Auth::user()->id;
         $inspector = Inspector::create($data);
         return $this->success(201,"Inspector created successfully",$inspector);
     }

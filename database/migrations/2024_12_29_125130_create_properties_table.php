@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("owner_id")->nullable();
+            $table->foreignId("client_id")->nullable()->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("file_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text("address");
             $table->enum("type", ["سكني", "تجاري", "صناعي"]);
+            $table->enum("status", ["pending", "accepted", "rejected"])->default('pending');
             $table->float("area");
             $table->string("city");
             $table->string("region");
             $table->text("description");
             $table->integer("longitude");
             $table->integer("latitude");
-            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
     }

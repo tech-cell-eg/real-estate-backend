@@ -8,15 +8,17 @@ use App\Http\Requests\Company\UpdateCompanyRequest;
 use App\Http\Resources\company\WalletResource;
 use App\Models\Company;
 use App\Traits\ApiResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CompanyProfileController extends Controller
 {
     use ApiResponse;
-    public function update(UpdateCompanyRequest $request,Company $company)
+    public function update(UpdateCompanyRequest $request)
     {
-        
-        // $company = $request->user(); // Get the authenticated company/user
+        $companyId = Auth::user()->id;
+        $company = Company::find($companyId);
+
         $data = $request->validated();
         // Update the company data
         $company->update($data);
@@ -29,8 +31,8 @@ class CompanyProfileController extends Controller
 
     public function resetPassword(ResetPasswordRequest $request) {
         $request->validated();
-        
-        $company = Company::where('id',1)->first();
+        $companyId=Auth::user()->id;
+        $company = Company::where('id',$companyId)->first();
         // Check current password
         if (!Hash::check($request->current_password, $company->password)) {
             return $this->failed(400, 'Current password is incorrect.');
@@ -46,8 +48,11 @@ class CompanyProfileController extends Controller
 
     public function showBalance()
     {
+        // $balance = Auth::user()->balance;
+
         // Find the company by its ID
-        $company = Company::find(1);
+        $company=Auth::user();
+        // $company = Company::find(1);
 
         // Check if the company exists
         if (!$company) {
