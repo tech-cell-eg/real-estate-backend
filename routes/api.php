@@ -26,6 +26,8 @@ use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\ClientOfferController;
+use App\Http\Controllers\ClientPropertyController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -52,10 +54,10 @@ Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPa
 Route::get('/company/balance', [CompanyProfileController::class, 'showBalance'])->middleware(['auth:sanctum']);
 Route::apiResource("company/properties", CompanyPropertyController::class)->middleware(['auth:sanctum']);
 Route::get("properties/paid",[ CompanyPropertyController::class,'showAllPaid'])->middleware(['auth:sanctum']);
-Route::apiResource("company/terms", TermsController::class);
+Route::apiResource("terms", TermsController::class);
 
 
-Route::apiResource("offers", OfferController::class);
+// Route::apiResource("offers", OfferController::class);
 
 Route::apiResource("orders", OrderController::class)->middleware(['auth:sanctum']);
 
@@ -81,7 +83,8 @@ Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::clas
 
 
 
-
 Route::apiResource("cards", CardController::class);
 Route::apiResource("payments", PaymentController::class);
 Route::apiResource("notifications", NotificationController::class);
+Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
+Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
