@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Traits\ApiResponse;
+use App\Traits\AuthUserTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller 
 {
-    use ApiResponse;
+    use ApiResponse, AuthUserTrait;
+
+    private $notifications;
+
+    function __construct()
+    {
+        $this->notifications = $this->authUser()->notifications;
+    }
 
     function index()
     {
-        $user = Auth::user();// i will change this later
-
-        $ids = $user->notifications->pluck("id")->toArray();
-        $data = $user->notifications->pluck("data")->toArray();
+        $ids = $this->notifications->pluck("id")->toArray();
+        $data = $this->notifications->pluck("data")->toArray();
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]["id"] = $ids[$i];
         }
@@ -25,9 +31,7 @@ class NotificationController extends Controller
 
     function show($id)
     {
-        $user = Auth::user();// i will change this later
-
-        foreach ($user->notifications as $notification) {
+        foreach ($this->notifications as $notification) {
             if ($notification->id == $id) {
                 return $this->success(200, "notification found!", $notification);
             }
@@ -38,9 +42,7 @@ class NotificationController extends Controller
 
     function destroy($id)
     {
-        $user = Auth::user();// i will change this later
-
-        foreach ($user->notifications as $notification) {
+        foreach ($this->notifications as $notification) {
             if ($notification->id == $id) {
                 $notification->delete();
                 return $this->success(200, "notification deleted!");

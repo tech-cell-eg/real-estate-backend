@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->foreignId("client_id")->nullable()->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId("file_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->foreignId("file_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->text("address");
             $table->enum("type", ["سكني", "تجاري", "صناعي"]);
             $table->enum("status", ["pending", "accepted", "rejected"])->default('pending');

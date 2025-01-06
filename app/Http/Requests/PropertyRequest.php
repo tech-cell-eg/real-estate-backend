@@ -25,12 +25,13 @@ class PropertyRequest extends FormRequest
             "address" => ["required"],
             "city" => ["required"],
             "region" => ["required"],
-            "images" => ["required"],
+            "images" => ["required", 'array'],
             "description" => ["required"],
             "area" => ["required", "numeric"],
             "longitude" => ["required", "numeric"],
             "latitude" => ["required", "numeric"],
             "type" => ['required','in:سكني,تجاري,صناعي'],
+            "status" => ['in:pending,accepted,rejected']
         ];
     }
 }

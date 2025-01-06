@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('property_id')->nullable()->constrained();
             $table->string('path');
             $table->string('url');
             $table->timestamps();
