@@ -9,12 +9,12 @@ class ProjectComment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'comment'];
 
-    protected $hidden = ['created_at','updated_at'];
+    protected $fillable = [
+        'project_id',
+        'writer_id',
+        'writer_type',
+        'comment'
+    ];
 
-    public function project()
-    {
-        return $this->belongsTo(Order::class);
-    }
 }

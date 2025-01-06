@@ -34,6 +34,7 @@ use App\Http\Controllers\InspectorOrderController;
 use App\Http\Controllers\InspectorPaymentController;
 use App\Http\Controllers\InspectorProjectsController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProjectCommentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
@@ -106,3 +107,7 @@ Route::get('inspector-payments', [InspectorPaymentController::class, 'index'])
 ->middleware('auth:sanctum');
 
 Route::get('wallet', [WalletController::class, 'index'])->middleware('auth:sanctum');
+Route::get('project-commeents/{id}', [ProjectCommentController::class, 'show'])
+->middleware('auth:sanctum');
+Route::post('project-commeents/{id}', [ProjectCommentController::class, 'store'])
+->middleware('auth:sanctum');
