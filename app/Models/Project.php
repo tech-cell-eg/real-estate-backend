@@ -21,4 +21,12 @@ class Project extends Model
     function company() {
         return $this->belongsTo(Company::class);
     }
+
+    function inspector() {
+        return $this->belongsTo(Inspector::class);
+    }
+
+    function report() {
+        // return $this->belongsTo(Report::class);
+    }
 }

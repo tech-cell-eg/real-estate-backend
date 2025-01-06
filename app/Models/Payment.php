@@ -13,21 +13,15 @@ class Payment extends Model
     protected $fillable = [
         "price",
         "card_id",
-        "client_id",
-        "property_id",
-        "company_id",
+        "project_id",
+        "from_id",
+        "to_id",
+        "from_type",
+        "to_type",
         "paid"
     ];
 
-    function company() {
-        return $this->belongsTo(Company::class);
-    }
-
-    function property() {
-        return $this->belongsTo(Property::class);
-    }
-
-    function client() {
-        return $this->belongsTo(Client::class);
+    function project() {
+        return $this->belongsTo(Project::class);
     }
 }

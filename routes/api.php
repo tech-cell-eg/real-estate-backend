@@ -27,6 +27,8 @@ use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\ClientOfferController;
+use App\Http\Controllers\ClientOrderController;
+use App\Http\Controllers\ClientPaymentController;
 use App\Http\Controllers\ClientPropertyController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
@@ -57,9 +59,7 @@ Route::get("properties/paid",[ CompanyPropertyController::class,'showAllPaid'])-
 Route::apiResource("terms", TermsController::class);
 
 
-// Route::apiResource("offers", OfferController::class);
 
-Route::apiResource("orders", OrderController::class)->middleware(['auth:sanctum']);
 
 Route::apiResource("company/projects", ProjectsController::class)->middleware(['auth:sanctum']);
 Route::post('projects/note',[ProjectNoteController::class,'store'])->middleware(['auth:sanctum']);
@@ -83,8 +83,9 @@ Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::clas
 
 
 
-Route::apiResource("cards", CardController::class);
-Route::apiResource("payments", PaymentController::class);
-Route::apiResource("notifications", NotificationController::class);
+Route::apiResource("cards", CardController::class)->middleware('auth:sanctum');
+Route::apiResource("client-payments", ClientPaymentController::class)->middleware('auth:sanctum');
+Route::apiResource("notifications", NotificationController::class)->middleware('auth:sanctum');
 Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
 Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
+Route::apiResource('client-orders', ClientOrderController::class)->middleware('auth:sanctum');
