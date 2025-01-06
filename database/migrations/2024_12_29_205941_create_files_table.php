@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('path');
             $table->string('url');
+            $table->foreignId('report_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('property_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

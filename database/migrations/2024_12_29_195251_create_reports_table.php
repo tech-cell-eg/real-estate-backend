@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId("inspector_id")->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('file_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('property_code');
             $table->date('report_date');
             $table->string('property_description');
