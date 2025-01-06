@@ -84,18 +84,24 @@ Route::post('projects/comments',[ProjectCommentsController::class,'addComment'])
 Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
 
 
-Route::get('comments', );
-
-// ************************************************************************************************
-// ************************************************************************************************
 Route::apiResource("cards", CardController::class)->middleware('auth:sanctum');
 Route::apiResource("client-payments", ClientPaymentController::class)->middleware('auth:sanctum');
 Route::apiResource("notifications", NotificationController::class)->middleware('auth:sanctum');
 Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
 Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
 Route::apiResource('client-orders', ClientOrderController::class)->middleware('auth:sanctum');
-// ************************************************************************************************
-// ************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::apiResource('inspector-orders', InspectorOrderController::class)
 ->middleware('auth:sanctum');
