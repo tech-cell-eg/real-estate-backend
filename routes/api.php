@@ -35,6 +35,7 @@ use App\Http\Controllers\InspectorPaymentController;
 use App\Http\Controllers\InspectorProjectsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
@@ -93,16 +94,6 @@ Route::apiResource('client-orders', ClientOrderController::class)->middleware('a
 
 
 
-
-
-
-
-
-
-
-
-
-
 Route::apiResource('inspector-orders', InspectorOrderController::class)
 ->middleware('auth:sanctum');
 Route::apiResource('inspector-projects', InspectorProjectsController::class)
@@ -113,3 +104,5 @@ Route::get('inspector-reports', [ReportController::class, 'index'])
 ->middleware('auth:sanctum');
 Route::get('inspector-payments', [InspectorPaymentController::class, 'index'])
 ->middleware('auth:sanctum');
+
+Route::get('wallet', [WalletController::class, 'index'])->middleware('auth:sanctum');

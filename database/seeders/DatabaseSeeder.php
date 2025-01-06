@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
         Inspector::factory(3)->create();
         Project::factory(20)->create();
         Report::factory(20)->create();
+        $this->call([WalletSeeder::class]);
         // Offer::factory(10)->create();
         // Order::factory(10)->create();
         // Card::factory(10)->create();
