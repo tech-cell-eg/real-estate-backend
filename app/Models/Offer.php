@@ -10,10 +10,12 @@ class Offer extends Model
     use HasFactory;
 
     protected $fillable = [
-        "file",
+        "file_path",
         "price",
-        "companyName",
+        "client_id",
+        "company_id",
+        "inspector_id",
         "property_id",
-        "state"
+        "status"
     ];
 }

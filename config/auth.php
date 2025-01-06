@@ -41,8 +41,20 @@ return [
             'provider' => 'users',
         ],
         'api-client' => [
-            'driver' => 'token',
+            'driver' => 'sanctum',
             'provider' => 'clients',
+        ],
+        'api-company' => [
+            'driver' => 'sanctum',
+            'provider' => 'companies',
+        ],
+        'api-inspector' => [
+            'driver' => 'sanctum',
+            'provider' => 'inspectors',
+        ],
+        'api-reviewer' => [
+            'driver' => 'sanctum',
+            'provider' => 'reviewers',
         ]
     ],
 
@@ -67,11 +79,31 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+            'table' => 'users',
         ],
 
         'clients' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Client::class),
+            'table' => 'clients',
+        ],
+
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Company::class),
+            'table' => 'companies',
+        ],
+
+        'inspectors' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Inspector::class),
+            'table' => 'inspectors',
+        ],
+
+        'reviewers' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Reviewer::class),
+            'table' => 'reviewers',
         ],
 
         // 'users' => [

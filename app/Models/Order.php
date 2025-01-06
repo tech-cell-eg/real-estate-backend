@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -17,7 +19,8 @@ class Order extends Model
         "inspector_id",
         "status",
         "companyRate",
-        "inspectorsRate"
+        "inspectorsRate",
+        "reviewer_id"
     ];
 
     function property() {
@@ -31,4 +34,24 @@ class Order extends Model
     function inspector() {
         return $this->belongsTo(Inspector::class);
     }
+
+
+    public function notes()
+    {
+        return $this->hasMany(ProjectNote::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(ProjectComment::class);
+    }
+
+    public function scopeFilters(Builder $builder,$filters){
+
+        $builder->when($filters['status'] ?? false, function ($query, $status) {
+            return $query->where('status', $status);
+        });
+    }
+
+
 }

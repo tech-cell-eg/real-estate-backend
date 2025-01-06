@@ -24,8 +24,12 @@ class Inspector extends Authenticatable
         'area_id_2',
         'area_id_3',
         'password',
-        'delegation',
+        'certificate',
         'terms_accepted',
+        'company_id',
+        'experience',
+        'years_of_experience',
+        'bio'
     ];
 
     public function city(): BelongsTo
@@ -47,4 +51,9 @@ class Inspector extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function company(): BelongsTo
+{
+    return $this->belongsTo(Company::class);
+}
 }

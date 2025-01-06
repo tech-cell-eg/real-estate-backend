@@ -37,7 +37,7 @@ class InspectorFactory extends Factory
             'area_id_3' => Area::factory()->create([
                 'city_id' => $city->id,
             ]),
-            'delegation' => fake()->randomElement([UploadedFile::fake()->image('testImage1.jpg'), null]),
+            'certificate' => fake()->randomElement([UploadedFile::fake()->image('testImage1.jpg'), null]),
             'terms_accepted' => 1,
         ];
     }

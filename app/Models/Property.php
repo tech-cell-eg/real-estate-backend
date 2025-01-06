@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
@@ -12,6 +13,7 @@ class Property extends Model
 
 
     protected $fillable = [
+        "client_id",
         "address",
         "city",
         "region",
@@ -20,11 +22,16 @@ class Property extends Model
         "longitude",
         "latitude",
         "type",
-        "price",
+        "status",
     ];
 
     public function images()
     {
-        return $this->hasMany(Image::class);
-    }   
+        return $this->hasMany(File::class);
+    }
+
+    public function getShortDescription($length)
+    {
+        return Str::limit($this->description, $length); 
+    }
 }

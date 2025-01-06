@@ -15,23 +15,30 @@ class PropertiesResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id, 
+            'id' => $this->id,
             'address' => $this->address,
             'region' => $this->region,
             'city' => $this->city,
             'price' => $this->price,
-            'description' => $this->getShortDescription(),
+            'description' => $this->getShortDescription(100),
             'type' => $this->type,
             'area' => $this->area,
-            'longitude' => $this->area,
-            'latitude' => $this->area,
+            'longitude' => $this->longitude,
+            'latitude' => $this->latitude,
             'image' => $this->images->isNotEmpty() ? $this->images->first()->path : null // Include only the first image path
         ];
     }
 
-        protected function getShortDescription($length = 100): string
-        {
-            return substr($this->description, 0, $length) . (strlen($this->description) > $length ? '...' : '');
-        }
-    
+
+
+
+    public static function addPaginationMeta($paginated)
+    {
+        return [
+            'current_page' => $paginated->currentPage(),
+            'last_page' => $paginated->lastPage(),
+            'per_page' => $paginated->perPage(),
+            'total' => $paginated->total(),
+        ];
+    }
 }
