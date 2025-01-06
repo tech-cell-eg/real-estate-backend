@@ -22,7 +22,6 @@ class CardRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'client_id' => ['required', 'exists:clients,id'],
             'name_on_card' => ['required', 'string', 'max:255'],
             'card_number' => ['required', 'string','regex:/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/'],
             'expiration_date' => ['required', 'string', 'regex:/^\d{2}\/\d{2}$/'],

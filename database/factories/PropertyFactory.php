@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Testing\Fakes\Fake;
 
@@ -25,9 +26,10 @@ class PropertyFactory extends Factory
             "area" => 118,
             "longitude" => 23.45,
             "latitude" => 45.34,
-            "price" => ceil(rand(10,500)),
+            // "price" => ceil(rand(10,500)),
             "type" => fake()->randomElement(["سكني", "تجاري", "صناعي"]),
-            "owner_id" => fake()->randomDigit()
+            "client_id" => Client::inRandomOrder()->first()->id,
+            "status" => fake()->randomElement(["pending", "accepted", "rejected"])
         ];
     }
 }

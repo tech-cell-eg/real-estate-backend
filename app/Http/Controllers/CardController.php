@@ -13,8 +13,7 @@ class CardController extends Controller
 
     public function index()
     {
-        // $cards = Card::where("client_id", auth()->user()->id)->get();
-        $cards = Card::all();
+        $cards = Card::where("client_id", auth('api-client')->id())->get();
         return $this->success(200, "all cards", $cards);
     }
 
@@ -25,7 +24,7 @@ class CardController extends Controller
 
     public function store(CardRequest $request)
     {
-        $request["client_id"] = Auth::user()->id;
+        $request["client_id"] = auth('api-client')->id();
         $new_card = Card::create($request->toArray());
         return $this->success(200, "card added successfully!", $new_card);
     }

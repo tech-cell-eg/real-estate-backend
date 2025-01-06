@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Company\TermsRequest;
 use App\Models\Terms;
+use App\Traits\ApiResponse;
 
 class TermsController extends Controller
 {
+    use ApiResponse;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $terms=Terms::all();
-        return response()->json($terms);
+        return $this->success(200, "Terms and Conditions", $terms);
     }
 
     /**
