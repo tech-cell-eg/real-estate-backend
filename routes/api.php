@@ -13,7 +13,7 @@ use App\Http\Controllers\API\Profile\UpdatePasswordController;
 use App\Http\Controllers\API\Profile\UpdateProfileController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\inspector\InspectorController;
-use App\Http\Controllers\Company\inspector\InspectorProjectController;
+// use App\Http\Controllers\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\Company\ProjectCommentsController;
 use App\Http\Controllers\Company\ProjectNoteController;
@@ -24,15 +24,17 @@ use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
 use App\Http\Controllers\Company\reviewer\ReviewerController;
 use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\TermsController;
-use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\ClientOfferController;
 use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\ClientPaymentController;
 use App\Http\Controllers\ClientPropertyController;
+use App\Http\Controllers\Company\inspector\InspectorProjectController;
+use App\Http\Controllers\InspectorOrderController;
+use App\Http\Controllers\InspectorPaymentController;
+use App\Http\Controllers\InspectorProjectsController;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
@@ -82,10 +84,26 @@ Route::post('projects/comments',[ProjectCommentsController::class,'addComment'])
 Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
 
 
+Route::get('comments', );
 
+// ************************************************************************************************
+// ************************************************************************************************
 Route::apiResource("cards", CardController::class)->middleware('auth:sanctum');
 Route::apiResource("client-payments", ClientPaymentController::class)->middleware('auth:sanctum');
 Route::apiResource("notifications", NotificationController::class)->middleware('auth:sanctum');
 Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
 Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
 Route::apiResource('client-orders', ClientOrderController::class)->middleware('auth:sanctum');
+// ************************************************************************************************
+// ************************************************************************************************
+
+Route::apiResource('inspector-orders', InspectorOrderController::class)
+->middleware('auth:sanctum');
+Route::apiResource('inspector-projects', InspectorProjectsController::class)
+->middleware('auth:sanctum');
+Route::post('inspector-reports', [ReportController::class, 'store'])
+->middleware('auth:sanctum');
+Route::get('inspector-reports', [ReportController::class, 'index'])
+->middleware('auth:sanctum');
+Route::get('inspector-payments', [InspectorPaymentController::class, 'index'])
+->middleware('auth:sanctum');

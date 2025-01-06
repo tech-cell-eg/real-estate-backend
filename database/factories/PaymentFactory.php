@@ -21,6 +21,12 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
+            // "price" => fake()->numerify("###000"),
+            // "card_id" => Card::inRandomOrder()->first()->id,
+            // "client_id" => Client::inRandomOrder()->first()->id,
+            // "company_id" => Company::inRandomOrder()->first()->id,
+            // "property_id" => Property::inRandomOrder()->first()->id,
+            // "paid" => fake()->randomElement([0, 1])
             "price" => fake()->numerify("###000"),
             "card_id" => Card::inRandomOrder()->first()->id,
             "client_id" => Client::inRandomOrder()->first()->id,

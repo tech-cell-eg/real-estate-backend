@@ -11,7 +11,18 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client-status'
+        'client_id',
+        'property_id',
+        'company_id',
+        'inspector_id',
+        'reviewer_id',
+        'report_id',
+        'client-status',
+        'company-status',
+        'inspector-status',
+        'price',
+        'company-rate',
+        'inspector-rate',
     ];
 
     function property() {
@@ -24,6 +35,10 @@ class Project extends Model
 
     function inspector() {
         return $this->belongsTo(Inspector::class);
+    }
+
+    function notes() {
+        return $this->hasMany(ProjectNote::class);
     }
 
     function report() {
