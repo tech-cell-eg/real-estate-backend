@@ -26,6 +26,7 @@ class ClientOrderController extends Controller
     function index()
     {
         $orders = Project::with('property', 'company', 'inspector')
+        ->where("client_id", "!=", null)
         ->where("client_id", auth('api-client')->id())
         ->where('company-status', 'accepted')
         ->where('client-status', '!=', 'pending')->get();

@@ -22,6 +22,7 @@ class ProjectFactory extends Factory
     {
         return [
             "client_id" => Client::inRandomOrder()->first()->id,
+            "inspector_id" => Inspector::inRandomOrder()->first()->id,
             "company_id" => Company::inRandomOrder()->first()->id,
             "property_id" => Property::inRandomOrder()->first()->id,
             "company-status" => fake()->randomElement(["accepted", "rejected", "pending"]),

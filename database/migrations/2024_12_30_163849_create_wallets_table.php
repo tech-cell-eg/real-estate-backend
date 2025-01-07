@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('client_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('inspector_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('reviewer_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('owner_id');
+            $table->string('owner_type');
             $table->decimal('current_balance', 10, 2)->default(0); 
             $table->decimal('outstanding_balance', 10, 2)->default(0); 
             $table->timestamps();

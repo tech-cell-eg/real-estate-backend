@@ -13,7 +13,7 @@ use App\Http\Controllers\API\Profile\UpdatePasswordController;
 use App\Http\Controllers\API\Profile\UpdateProfileController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\inspector\InspectorController;
-use App\Http\Controllers\Company\inspector\InspectorProjectController;
+// use App\Http\Controllers\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\Company\CompanyProfileController;
 use App\Http\Controllers\Company\ProjectCommentsController;
 use App\Http\Controllers\Company\ProjectNoteController;
@@ -24,7 +24,6 @@ use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
 use App\Http\Controllers\Company\reviewer\ReviewerController;
 use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\TermsController;
-use App\Http\Controllers\OfferController;
 use App\Http\Controllers\CardController;
 
 use App\Http\Controllers\CityAreaController;
@@ -35,9 +34,14 @@ use App\Http\Controllers\ClientOfferController;
 use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\ClientPaymentController;
 use App\Http\Controllers\ClientPropertyController;
+use App\Http\Controllers\Company\inspector\InspectorProjectController;
+use App\Http\Controllers\InspectorOrderController;
+use App\Http\Controllers\InspectorPaymentController;
+use App\Http\Controllers\InspectorProjectsController;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProjectCommentController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('company/projects/search/{status}',[ProjectsController::class,'search']);
@@ -102,3 +106,21 @@ Route::apiResource("notifications", NotificationController::class)->middleware('
 Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
 Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
 
+
+
+Route::apiResource('inspector-orders', InspectorOrderController::class)
+->middleware('auth:sanctum');
+Route::apiResource('inspector-projects', InspectorProjectsController::class)
+->middleware('auth:sanctum');
+Route::post('inspector-reports', [ReportController::class, 'store'])
+->middleware('auth:sanctum');
+Route::get('inspector-reports', [ReportController::class, 'index'])
+->middleware('auth:sanctum');
+Route::get('inspector-payments', [InspectorPaymentController::class, 'index'])
+->middleware('auth:sanctum');
+
+Route::get('wallet', [WalletController::class, 'index'])->middleware('auth:sanctum');
+Route::get('project-commeents/{id}', [ProjectCommentController::class, 'show'])
+->middleware('auth:sanctum');
+Route::post('project-commeents/{id}', [ProjectCommentController::class, 'store'])
+->middleware('auth:sanctum');

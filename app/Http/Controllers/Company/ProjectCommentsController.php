@@ -16,7 +16,7 @@ class ProjectCommentsController extends Controller
         return $this->success(200,'Comment Added Successfully');
     }
 
-    public function show(int $projectId){
+    // public function show(int $projectId){
     public function addComment(StoreProjectCommentsRequest $request){
         $validatedData = $request->validated();
         $comment=ProjectComment::create($validatedData);
