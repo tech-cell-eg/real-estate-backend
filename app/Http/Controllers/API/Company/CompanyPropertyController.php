@@ -9,6 +9,7 @@ use App\Http\Resources\company\PaidProjectsResource;
 use App\Models\Image;
 use App\Models\Payment;
 use App\Models\Property;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class CompanyPropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::with('images')->get();
+        $properties = Property::with('images')->where('status','pending')->get();
         return $this->success(200, "all properties", $properties);
     }
 
@@ -112,6 +113,15 @@ class CompanyPropertyController extends Controller
 
         $property->delete();
         return $this->success(200, "property deleted successfully!");
+
+    }
+
+    public function sendOffer($id,Request $request)
+    {
+        $property = Property::findOrFail($id);
+        $property->status = 'accepted';
+        $property->save();
+        return $this->success(200, "offer sent successfully!");
 
     }
 }

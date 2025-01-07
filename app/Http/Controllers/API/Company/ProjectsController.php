@@ -7,6 +7,7 @@ use App\Http\Resources\company\AllProjectsResorce;
 use App\Http\Resources\company\ProjectCollection;
 use App\Http\Resources\company\ShowProjectsResorce;
 use App\Models\Project;
+use App\Models\Property;
 use App\Traits\ApiResponse;
 use App\Traits\AuthUserTrait;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ProjectsController extends Controller
     public function index()
     {
         $user = $this->authUser();
-        $projects = Project::with("property", "company", "inspector")->where('company_id', $user->id)->where('company_id','!=',null)->paginate();
+        $projects = Project::with("property", "company", "inspector", 'report')->where('company_id', $user->id)->where('company_id', '!=', null)->paginate();
         return response()->json([
             'status' => 200,
             'message' => 'All Projects',
@@ -31,7 +32,7 @@ class ProjectsController extends Controller
     public function show($id)
     {
         $user = $this->authUser();
-        $project = Project::with(['property', 'company', 'inspector'])->where('company_id', $user->id)->where('company_id','!=',null)->find($id);
+        $project = Project::with(['property', 'company', 'inspector', 'report'])->where('company_id', $user->id)->where('company_id', '!=', null)->find($id);
         // If the project is not found, return a 404 response
         if (!$project) {
             return response()->json([
@@ -51,7 +52,7 @@ class ProjectsController extends Controller
     {           // To show project with status accepted or refused
         $user = $this->authUser();
         $status = $request->query('status', 'accepted');
-        $projects = Project::with(['property', 'company', 'inspector'])->where('company_id', $user->id)->where('company_id','!=',null)->where('status', $status);
+        $projects = Project::with(['property', 'company', 'inspector', 'report'])->where('company_id', $user->id)->where('company_id', '!=', null)->where('status', $status);
         // Validate the status parameter to ensure it's either 'accepted' or 'refused'
         if (!in_array($status, ['accepted', 'rejected'])) {
             return response()->json([
@@ -71,6 +72,20 @@ class ProjectsController extends Controller
             'data' => AllProjectsResorce::collection($projects),
             'meta' => AllProjectsResorce::addPaginationMeta($projects),
         ]);
+    }
+
+    public function sendRequest($id, Request $request)
+    {
+        $user = $this->authUser();
+        $clientID = Property::findOrFail($id)->client_id;
+        $project = Project::create([
+            'company_id' => $user->id,
+            'property_id' => $id,
+            'client_id' => $clientID,
+            'company-status' => 'accepted',
+            'price' => $request->price,
+        ]);
+        return $this->success(200, 'Project request sent successfully', $project);
     }
 }
  
