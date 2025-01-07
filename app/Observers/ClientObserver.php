@@ -14,7 +14,7 @@ class ClientObserver
         $data["message"] = "يمكنك مشاهدة جميع التنبيهات من هنا";
         $data["this"] = $client;
 
-        // $client->notify(new ClientNotification($data));
+        $client->notify(new ClientNotification($data));
     }
 
     public function updated(Client $client): void

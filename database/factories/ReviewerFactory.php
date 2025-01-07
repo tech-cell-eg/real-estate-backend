@@ -27,7 +27,7 @@ class ReviewerFactory extends Factory
             'password' => 'password',
             'city_id' => $city->id,
             'review_fees' => fake()->randomFloat(2, 0, 1000),
-            'national_id' => fake()->unique()->randomNumber(8),
+            'national_id' => fake()->unique()->randomNumber(),
             'certificate' => fake()->randomElement([UploadedFile::fake()->image('testImage1.jpg'), null]),
             'terms_accepted' => 1,
         ];

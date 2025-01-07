@@ -13,8 +13,7 @@ class ClientPaymentController extends Controller
     function index() {
         $payments = Payment::with('project')
         ->where('from_id', auth('api-client')->id())
-        ->where('from_type', 'client')
-        ->where('to_type', 'company')->get();
+        ->where('from_type', 'client')->get();
 
         $data = [];
         foreach ($payments as $payment) {

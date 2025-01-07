@@ -17,7 +17,7 @@ class ClientOrderController extends Controller
             'property' => $order->property,
             'company' => $order->company,
             'inspector' => $order->inspector,
-            'report' => null, // i will change this later
+            'report' => $order->report,
             'price' => $order->price,
             'status' => $order['client-status']
         ];
@@ -25,8 +25,7 @@ class ClientOrderController extends Controller
 
     function index()
     {
-        $orders = Project::with('property', 'company', 'inspector')
-        ->where("client_id", "!=", null)
+        $orders = Project::where("client_id", "!=", null)
         ->where("client_id", auth('api-client')->id())
         ->where('company-status', 'accepted')
         ->where('client-status', '!=', 'pending')->get();

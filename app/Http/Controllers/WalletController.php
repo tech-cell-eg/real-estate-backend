@@ -21,6 +21,12 @@ class WalletController extends Controller
             ->where('owner_type', 'company')->first();
             return $this->success(200, 'wallet found!', $wallet);
         }
+
+        if (auth('api-reviewer')->check()) {
+            $wallet = Wallet::where('owner_id', auth('api-reviewer')->id())
+            ->where('owner_type', 'reviewer')->first();
+            return $this->success(200, 'wallet found!', $wallet);
+        }
         
         return $this->failed(402, 'wallet not found!');
     }

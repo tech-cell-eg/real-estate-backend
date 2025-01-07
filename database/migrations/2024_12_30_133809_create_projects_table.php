@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum("client-status", ["accepted", "rejected", "pending"])->default("pending");
             $table->enum("company-status", ["accepted", "rejected", "pending"])->default("accepted");
             $table->enum("inspector-status", ["accepted", "rejected", "pending"])->default("pending");
+            $table->enum("reviewer-status", ["accepted", "rejected", "pending"])->default("pending");
             $table->decimal('price', 10, 2);
             $table->enum("company-rate", [1,2,3,4,5])->nullable();
             $table->enum("inspector-rate", [1,2,3,4,5])->nullable();

@@ -42,8 +42,9 @@ use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthComp
 use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
+use App\Http\Controllers\CompanyPaymentController;
 
-Route::get('company/projects/search/{status}',[ProjectsController::class,'search']);
+Route::get('company/projects/search/{status}', [ProjectsController::class, 'search']);
 
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
@@ -66,31 +67,31 @@ Route::put('/company/profile/{company}', [CompanyProfileController::class, 'upda
 Route::put('/company/reset-password', [CompanyProfileController::class, 'resetPassword'])->middleware(['auth:sanctum']);
 Route::get('/company/balance', [CompanyProfileController::class, 'showBalance'])->middleware(['auth:sanctum']);
 Route::apiResource("company/properties", CompanyPropertyController::class)->middleware(['auth:sanctum']);
-Route::get("properties/paid",[ CompanyPropertyController::class,'showAllPaid'])->middleware(['auth:sanctum']);
+Route::get("properties/paid", [CompanyPropertyController::class, 'showAllPaid'])->middleware(['auth:sanctum']);
 Route::apiResource("terms", TermsController::class);
 
 
 
 
 Route::apiResource("company/projects", ProjectsController::class)->middleware(['auth:sanctum']);
-Route::post('projects/note',[ProjectNoteController::class,'store'])->middleware(['auth:sanctum']);
-Route::post('projects/comments',[ProjectCommentsController::class,'store'])->middleware(['auth:sanctum']);
-Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'show'])->middleware(['auth:sanctum']);
-Route::get('company/inspectors',[InspectorController::class,'index'])->middleware(['auth:sanctum']);
+Route::post('projects/note', [ProjectNoteController::class, 'store'])->middleware(['auth:sanctum']);
+Route::post('projects/comments', [ProjectCommentsController::class, 'store'])->middleware(['auth:sanctum']);
+Route::get('projects/comments/view/{projectId}', [ProjectCommentsController::class, 'show'])->middleware(['auth:sanctum']);
+Route::get('company/inspectors', [InspectorController::class, 'index'])->middleware(['auth:sanctum']);
 Route::apiResource("company/inspectors", InspectorController::class)->middleware(['auth:sanctum']);
-Route::put("projects/inspectors/{id}", [InspectorProjectController::class,'update'])->middleware(['auth:sanctum']);
+Route::put("projects/inspectors/{id}", [InspectorProjectController::class, 'update'])->middleware(['auth:sanctum']);
 Route::apiResource("company/reviewers", ReviewerController::class)->middleware(['auth:sanctum']);
-Route::put("projects/reviewers/{projectId}", [ReviewerProjectController::class,'update'])->middleware(['auth:sanctum']);
-Route::put("company/assign/reviewers/", [ReviewerCompanyController::class,'update'])->middleware(['auth:sanctum']);
-Route::put("company/assign/inspectors/", [InspectorCompanyController::class,'update'])->middleware(['auth:sanctum']);
+Route::put("projects/reviewers/{projectId}", [ReviewerProjectController::class, 'update'])->middleware(['auth:sanctum']);
+Route::put("company/assign/reviewers/", [ReviewerCompanyController::class, 'update'])->middleware(['auth:sanctum']);
+Route::put("company/assign/inspectors/", [InspectorCompanyController::class, 'update'])->middleware(['auth:sanctum']);
 
 
 
 
-Route::get('projects/search',[ProjectsController::class,'search']);
-Route::post('projects/note',[ProjectNoteController::class,'addNote']);
-Route::post('projects/comments',[ProjectCommentsController::class,'addComment']);
-Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
+Route::get('projects/search', [ProjectsController::class, 'search']);
+Route::post('projects/note', [ProjectNoteController::class, 'addNote']);
+Route::post('projects/comments', [ProjectCommentsController::class, 'addComment']);
+Route::get('projects/comments/view/{projectId}', [ProjectCommentsController::class, 'getComments']);
 
 
 
@@ -108,18 +109,22 @@ Route::apiResource('client-offers', ClientOfferController::class)->middleware('a
 
 
 Route::apiResource('inspector-orders', InspectorOrderController::class)
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 Route::apiResource('inspector-projects', InspectorProjectsController::class)
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 Route::post('inspector-reports', [ReportController::class, 'store'])
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 Route::get('inspector-reports', [ReportController::class, 'index'])
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 Route::get('inspector-payments', [InspectorPaymentController::class, 'index'])
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 
 Route::get('wallet', [WalletController::class, 'index'])->middleware('auth:sanctum');
 Route::get('project-commeents/{id}', [ProjectCommentController::class, 'show'])
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
 Route::post('project-commeents/{id}', [ProjectCommentController::class, 'store'])
-->middleware('auth:sanctum');
+  ->middleware('auth:sanctum');
+  
+  
+  Route::get('company-payments', [CompanyPaymentController::class, 'index'])
+  ->middleware('auth:sanctum');

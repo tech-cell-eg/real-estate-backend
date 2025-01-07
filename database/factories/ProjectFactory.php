@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Company;
 use App\Models\Inspector;
 use App\Models\Property;
+use App\Models\Report;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,10 @@ class ProjectFactory extends Factory
             "inspector_id" => Inspector::inRandomOrder()->first()->id,
             "company_id" => Company::inRandomOrder()->first()->id,
             "property_id" => Property::inRandomOrder()->first()->id,
+            "report_id" => Report::inRandomOrder()->first()->id,
             "company-status" => fake()->randomElement(["accepted", "rejected", "pending"]),
+            "client-status" => fake()->randomElement(["accepted", "rejected", "pending"]),
+            "inspector-status" => fake()->randomElement(["accepted", "rejected", "pending"]),
             "price" => fake()->numerify("##000")
         ];
     }
