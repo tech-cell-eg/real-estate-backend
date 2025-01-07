@@ -26,7 +26,6 @@ use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\CardController;
 
 use App\Http\Controllers\CityAreaController;
-use App\Http\Controllers\Company\ProjectsController;
 
 use App\Http\Controllers\ClientOfferController;
 use App\Http\Controllers\ClientOrderController;
