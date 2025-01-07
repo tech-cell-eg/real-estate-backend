@@ -9,7 +9,7 @@ class ProjectNote extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'note'];
+    protected $fillable = ['project_id', 'note'];
 
     public function project()
     {

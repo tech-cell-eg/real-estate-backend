@@ -11,22 +11,26 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client-status'
+        'client_id', 'property_id', 'company_id', 'inspector_id', 'reviewer_id', 'report_id', 'client', 'company', 'inspector', 'price',
     ];
 
-    function property() {
+    function property()
+    {
         return $this->belongsTo(Property::class);
     }
 
-    function company() {
+    function company()
+    {
         return $this->belongsTo(Company::class);
     }
 
-    function inspector() {
+    function inspector()
+    {
         return $this->belongsTo(Inspector::class);
     }
 
-    function report() {
+    function report()
+    {
         // return $this->belongsTo(Report::class);
     }
 }

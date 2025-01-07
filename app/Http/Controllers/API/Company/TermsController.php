@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\API\Company;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Company\TermsRequest;
@@ -10,12 +10,13 @@ use App\Traits\ApiResponse;
 class TermsController extends Controller
 {
     use ApiResponse;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $terms=Terms::all();
+        $terms = Terms::all();
         return $this->success(200, "Terms and Conditions", $terms);
     }
 
@@ -24,7 +25,7 @@ class TermsController extends Controller
      */
     public function store(TermsRequest $request)
     {
-        $validatedData= $request->validated();
+        $validatedData = $request->validated();
         $term = Terms::create($validatedData);
         return response()->json(['message' => 'Term created successfully'], 201);
     }
@@ -33,12 +34,12 @@ class TermsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-        public function update(TermsRequest $request, Terms $term)
-        {
-            $validatedData = $request->validated();
-            $term->update($validatedData);
-            return response()->json(['message' => 'Term updated successfully'], 200);
-        }
+    public function update(TermsRequest $request, Terms $term)
+    {
+        $validatedData = $request->validated();
+        $term->update($validatedData);
+        return response()->json(['message' => 'Term updated successfully'], 200);
+    }
 
     /**
      * Remove the specified resource from storage.

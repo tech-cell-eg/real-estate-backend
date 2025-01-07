@@ -36,8 +36,6 @@ class AppServiceProvider extends ServiceProvider
         Client::observe(ClientObserver::class);
         Payment::observe(PaymentObserver::class);
         Card::observe(CardObserver::class);
-        Offer::observe(OfferObserver::class);
-        Order::observe(OrderObserver::class);
         Property::observe(PropertyObserver::class);
         Terms::observe(TermsObserver::class);
     }

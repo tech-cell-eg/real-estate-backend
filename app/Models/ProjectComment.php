@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProjectComment extends Model
 {
-    use HasFactory;
 
-    protected $fillable = ['order_id', 'comment'];
+    protected $fillable = ['project_id', 'comment'];
 
     protected $hidden = ['created_at','updated_at'];
 

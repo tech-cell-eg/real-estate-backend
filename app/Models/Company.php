@@ -38,14 +38,8 @@ class Company extends Authenticatable
         'password' => 'hashed',
     ];
 
-
-    public function wallet()
-{
-    return $this->hasOne(CompanyWallet::class);
-}
-
-public function inspectors()
-{
-    return $this->hasMany(Inspector::class);
-}
+    public function inspectors()
+    {
+        return $this->hasMany(Inspector::class);
+    }
 }
