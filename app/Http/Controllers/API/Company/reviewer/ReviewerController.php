@@ -8,6 +8,7 @@ use App\Http\Requests\Company\Inspector\UpdateTeamRequest;
 use App\Models\Reviewer;
 use App\Traits\ApiResponse;
 use App\Traits\FileControl;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewerController extends Controller
@@ -19,6 +20,17 @@ class ReviewerController extends Controller
         $id = auth('api-company')->user()->id;
         $reviewers = Reviewer::with('city')->select('id', 'username', 'city_id')->where('company_id', $id)->get();
         return $this->success(200, "All Reviewers data", $reviewers);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'reviewer_id' => 'required|exists:reviewers,id'
+        ]);
+        $reviewerID = $request->reviewer_id;
+        $companyID = auth('api-company')->user()->id;
+        $reviewer = Reviewer::where('id' , $reviewerID)->update(['company_id' => $companyID]);
+        return $this->success(201, "Reviewer added successfully", $reviewer);
     }
 
     public function show($id)

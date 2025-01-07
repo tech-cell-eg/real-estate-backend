@@ -30,7 +30,7 @@ class InspectorController extends Controller
         $inspectorID = $request->inspector_id;
         $companyID = auth('api-company')->user()->id;
         $inspector = Inspector::where('id' , $inspectorID)->update(['company_id' => $companyID]);
-        return $this->success(201, "Inspector created successfully", $inspector);
+        return $this->success(201, "Inspector added successfully", $inspector);
     }
 
     public function show($id)
