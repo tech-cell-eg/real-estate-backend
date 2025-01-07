@@ -11,7 +11,6 @@ use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthRev
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\API\Profile\UpdatePasswordController;
 use App\Http\Controllers\API\Profile\UpdateProfileController;
-use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\Company\inspector\InspectorController;
 // use App\Http\Controllers\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\Company\CompanyProfileController;
