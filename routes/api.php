@@ -25,6 +25,11 @@ use App\Http\Controllers\Company\reviewer\ReviewerController;
 use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\TermsController;
 use App\Http\Controllers\CardController;
+
+use App\Http\Controllers\CityAreaController;
+use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\ProjectsController;
+
 use App\Http\Controllers\ClientOfferController;
 use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\ClientPaymentController;
@@ -38,6 +43,9 @@ use App\Http\Controllers\ProjectCommentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('company/projects/search/{status}',[ProjectsController::class,'search']);
+
 
 Route::get('/cities', [CityAreaController::class, 'cities']);
 Route::get('/cities/{city}/areas', [CityAreaController::class, 'CityAreas']);
@@ -86,12 +94,17 @@ Route::post('projects/comments',[ProjectCommentsController::class,'addComment'])
 Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments']);
 
 
+
+Route::apiResource("company/projects", ProjectsController::class);
+
+Route::apiResource("orders", OrderController::class);
+Route::apiResource("cards", CardController::class);
+Route::apiResource("payments", PaymentController::class);
 Route::apiResource("cards", CardController::class)->middleware('auth:sanctum');
 Route::apiResource("client-payments", ClientPaymentController::class)->middleware('auth:sanctum');
 Route::apiResource("notifications", NotificationController::class)->middleware('auth:sanctum');
 Route::apiResource('properties', ClientPropertyController::class)->middleware('auth:sanctum');
 Route::apiResource('client-offers', ClientOfferController::class)->middleware('auth:sanctum');
-Route::apiResource('client-orders', ClientOrderController::class)->middleware('auth:sanctum');
 
 
 
