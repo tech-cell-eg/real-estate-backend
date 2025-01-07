@@ -1,45 +1,47 @@
 <?php
 
-use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
-use App\Http\Controllers\API\Auth\Login\LoginController;
-use App\Http\Controllers\API\Auth\Logout\LogoutController;
-use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
-use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
-use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
-use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
-use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
-use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
-use App\Http\Controllers\API\Profile\UpdatePasswordController;
-use App\Http\Controllers\API\Profile\UpdateProfileController;
-use App\Http\Controllers\Company\inspector\InspectorController;
-// use App\Http\Controllers\Company\inspector\InspectorProjectController;
-use App\Http\Controllers\Company\CompanyProfileController;
-use App\Http\Controllers\Company\ProjectCommentsController;
-use App\Http\Controllers\Company\ProjectNoteController;
-use App\Http\Controllers\Company\ProjectsController;
-use App\Http\Controllers\Company\CompanyPropertyController;
-use App\Http\Controllers\Company\inspector\InspectorCompanyController;
-use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
-use App\Http\Controllers\Company\reviewer\ReviewerController;
-use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
-use App\Http\Controllers\Company\TermsController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
-
-use App\Http\Controllers\CityAreaController;
-
-use App\Http\Controllers\ClientOfferController;
-use App\Http\Controllers\ClientOrderController;
-use App\Http\Controllers\ClientPaymentController;
-use App\Http\Controllers\ClientPropertyController;
-use App\Http\Controllers\Company\inspector\InspectorProjectController;
-use App\Http\Controllers\InspectorOrderController;
-use App\Http\Controllers\InspectorPaymentController;
-use App\Http\Controllers\InspectorProjectsController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\ProjectCommentController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WalletController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CityAreaController;
+use App\Http\Controllers\ClientOfferController;
+use App\Http\Controllers\ClientOrderController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ClientPaymentController;
+use App\Http\Controllers\Company\TermsController;
+// use App\Http\Controllers\Company\inspector\InspectorProjectController;
+use App\Http\Controllers\ClientPropertyController;
+use App\Http\Controllers\InspectorOrderController;
+use App\Http\Controllers\ProjectCommentController;
+use App\Http\Controllers\Company\ProjectsController;
+use App\Http\Controllers\InspectorPaymentController;
+use App\Http\Controllers\InspectorProjectsController;
+use App\Http\Controllers\Company\ProjectNoteController;
+use App\Http\Controllers\API\Auth\Login\LoginController;
+use App\Http\Controllers\API\Auth\Logout\LogoutController;
+use App\Http\Controllers\Company\CompanyProfileController;
+use App\Http\Controllers\Company\CompanyPropertyController;
+
+use App\Http\Controllers\Company\ProjectCommentsController;
+
+use App\Http\Controllers\API\Profile\UpdateProfileController;
+use App\Http\Controllers\Company\reviewer\ReviewerController;
+use App\Http\Controllers\API\Profile\UpdatePasswordController;
+use App\Http\Controllers\Company\inspector\InspectorController;
+use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
+use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
+use App\Http\Controllers\Company\inspector\InspectorCompanyController;
+use App\Http\Controllers\Company\inspector\InspectorProjectController;
+use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
+use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
+use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
+use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
+use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
+use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
+use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
 
 Route::get('company/projects/search/{status}',[ProjectsController::class,'search']);
 

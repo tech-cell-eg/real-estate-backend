@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inspector_id')
+            $table->foreignId('inspector_id')->nullable()
             ->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('property_code');
             $table->timestamp('rating_date')->nullable();
