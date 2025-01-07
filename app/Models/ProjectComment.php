@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProjectComment extends Model
 {
+    use HasFactory;
 
-    protected $fillable = ['project_id', 'comment'];
+    protected $fillable = [
+        'project_id',
+        'writer_id',
+        'writer_type',
+        'comment'
+    ];
 
-    protected $hidden = ['created_at','updated_at'];
-
-    public function project()
-    {
-        return $this->belongsTo(Order::class);
-    }
 }

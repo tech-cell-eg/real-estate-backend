@@ -13,6 +13,6 @@ class ProjectNote extends Model
 
     public function project()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Project::class);
     }
 }

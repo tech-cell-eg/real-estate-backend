@@ -20,7 +20,9 @@ class ClientOfferController extends Controller
     }
 
     function index() {
-        $offers = Project::with('property', 'company')->where("client_id", auth('api-client')->id())
+        $offers = Project::with('property', 'company')
+        ->where("client_id", "!=", null)
+        ->where("client_id", auth('api-client')->id())
         ->where('company-status', 'accepted')->get();
 
         $data = [];
