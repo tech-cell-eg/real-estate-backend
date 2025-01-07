@@ -12,23 +12,26 @@ class CardObserver
 
     public function created(Card $card): void
     {
-        $client = Client::find(auth('api-client')->id());
-
-        $data["title"] = "بطاقة مصرفية جديدة";
-        $data["message"] = "لقد تم اضافة بطاقة مصرفية جديدة ";
-        $data["this"] = $card;
-
-        // $client->notify(new ClientNotification($data));
+        if(auth('api-client')->check()) 
+        {
+            $client = Client::find(auth('api-client')->id());
+            $data["title"] = "بطاقة مصرفية جديدة";
+            $data["message"] = "لقد تم اضافة بطاقة مصرفية جديدة ";
+            $data["this"] = $card;
+            $client->notify(new ClientNotification($data));
+        }
     }
 
     public function deleted(Card $card): void
     {
+        if (auth('api-client')->check()) {
         $client = Client::find(auth('api-client')->id());
 
         $data["title"] = "بطاقة مصرفية محذوفه";
         $data["message"] = "لقد تم حذف بطاقة مصرفية من حسابك ";
         $data["this"] = $card;
 
-        // $client->notify(new ClientNotification($data));
+        $client->notify(new ClientNotification($data));
+    }
     }
 }

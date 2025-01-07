@@ -4,11 +4,11 @@ namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
 
-class ClientNotification extends Notification
+class InspectorNotification extends Notification
 {
     public function __construct(private $data) {}
 
-    public function via() 
+    public function via()
     {
         return ['database'];
     }
