@@ -41,7 +41,6 @@ use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
-use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
 use App\Http\Controllers\CompanyPaymentController;
 
 Route::get('company/projects/search/{status}', [ProjectsController::class, 'search']);
