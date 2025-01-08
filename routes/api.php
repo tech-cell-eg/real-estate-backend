@@ -1,7 +1,6 @@
 <?php
 use App\Http\Controllers\API\Auth\Login\LoginController;
 use App\Http\Controllers\API\Auth\Logout\LogoutController;
-use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
