@@ -12,7 +12,7 @@ trait AuthUserTrait
 
     public Authenticatable|null $user;
 
-    public function authUser(): Authenticatable|JsonResponse|null
+    public function authUser()
     {
         foreach (config('auth.guards') as $guard => $value) {
             if (auth($guard)->check()) {
