@@ -19,7 +19,7 @@ use App\Http\Controllers\API\Company\reviewer\ReviewerController;
 use App\Http\Controllers\API\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\API\Company\TermsController;
 use App\Http\Controllers\API\Profile\UpdatePasswordController;
-use App\Http\Controllers\API\Profile\UpdateProfileController;
+
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CityAreaController;
 use App\Http\Controllers\ClientOfferController;
