@@ -3,7 +3,6 @@ use App\Http\Controllers\API\Auth\Login\LoginController;
 use App\Http\Controllers\API\Auth\Logout\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterController as AuthClientCompanyRegisterController;
 use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthInspectorRegisterController;
-use App\Http\Controllers\API\Auth\RegisterReviewer\RegisterController as AuthReviewerRegisterController;
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\API\Company\CompanyProfileController;
 use App\Http\Controllers\API\Company\CompanyPropertyController;
