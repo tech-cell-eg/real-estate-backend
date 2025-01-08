@@ -6,11 +6,13 @@ use App\Http\Controllers\API\Auth\RegisterInspector\RegisterController as AuthIn
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\API\Company\CompanyProfileController;
 use App\Http\Controllers\API\Company\CompanyPropertyController;
+use App\Http\Controllers\API\Company\inspector\InspectorCompanyController;
 use App\Http\Controllers\API\Company\inspector\InspectorController;
 use App\Http\Controllers\API\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\API\Company\ProjectCommentsController;
 use App\Http\Controllers\API\Company\ProjectNoteController;
 use App\Http\Controllers\API\Company\ProjectsController;
+use App\Http\Controllers\API\Company\reviewer\ReviewerCompanyController;
 use App\Http\Controllers\API\Company\reviewer\ReviewerController;
 use App\Http\Controllers\API\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\API\Company\TermsController;
@@ -31,12 +33,7 @@ use App\Http\Controllers\InspectorOrderController;
 use App\Http\Controllers\ProjectCommentController;
 use App\Http\Controllers\InspectorPaymentController;
 use App\Http\Controllers\InspectorProjectsController;
-
-
 use App\Http\Controllers\API\Profile\UpdateProfileController;
-use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
-use App\Http\Controllers\Company\inspector\InspectorCompanyController;
-
 use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
