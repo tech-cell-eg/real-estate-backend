@@ -12,7 +12,8 @@ use App\Http\Controllers\CityAreaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\NotificationController;
-
+use App\Http\Controllers\ProjectCommentController;
+use App\Http\Controllers\ReviewerProjectsController;
 
 // ************************************************************
 // *** city and area
@@ -37,3 +38,14 @@ Route::get('wallet', [WalletController::class, 'index'])->middleware('auth:sanct
 // ************************************************************
 Route::post('/update-profile', UpdateProfileController::class)->middleware(['auth:sanctum']);
 Route::post('/update-password', UpdatePasswordController::class)->middleware(['auth:sanctum']);
+// ************************************************************
+// *** comment
+// ************************************************************
+Route::get('project-commeents/{id}', [ProjectCommentController::class, 'show'])
+->middleware('auth:sanctum');
+Route::post('project-commeents/{id}', [ProjectCommentController::class, 'store'])
+->middleware('auth:sanctum');
+// ************************************************************
+// *** reviewer
+// ************************************************************
+Route::apiResource('reviewer-projects', ReviewerProjectsController::class);
