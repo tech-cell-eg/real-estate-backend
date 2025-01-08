@@ -23,7 +23,7 @@ class StoreProjectCommentsRequest extends FormRequest
     {
         return [
             'comment' => ['required','string'],
-            'order_id'=>['required','exists:orders,id']
+            'project_id'=>['required','exists:projects,id']
         ];
     }
 }

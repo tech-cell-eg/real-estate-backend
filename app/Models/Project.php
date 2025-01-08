@@ -25,15 +25,18 @@ class Project extends Model
         'inspector-rate',
     ];
 
-    function property() {
+    function property()
+    {
         return $this->belongsTo(Property::class);
     }
 
-    function company() {
+    function company()
+    {
         return $this->belongsTo(Company::class);
     }
 
-    function inspector() {
+    function inspector()
+    {
         return $this->belongsTo(Inspector::class);
     }
 
@@ -42,6 +45,6 @@ class Project extends Model
     }
 
     function report() {
-        // return $this->belongsTo(Report::class);
+         return $this->belongsTo(Report::class);
     }
 }

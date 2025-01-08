@@ -9,7 +9,6 @@ class ProjectComment extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'project_id',
         'writer_id',
