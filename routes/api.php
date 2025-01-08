@@ -75,10 +75,11 @@ Route::put("company/assign/inspectors/", [InspectorCompanyController::class, 'up
 Route::post("company/property/send-offer/{id}", [ProjectsController::class,'sendRequest'])->middleware(['auth:sanctum']);
 Route::post('projects/note',[ProjectNoteController::class,'store'])->middleware(['auth:sanctum']);
 Route::get('projects/comments/view/{projectId}',[ProjectCommentsController::class,'getComments'])->middleware(['auth:sanctum']);
-Route::get('company/inspectors',[InspectorController::class,'index'])->middleware(['auth:sanctum']);
-Route::get('company/inspectors/{inspector_id}',[InspectorController::class,'show'])->middleware(['auth:sanctum']);
-Route::post('company/inspectors',[InspectorController::class,'store'])->middleware(['auth:sanctum']);
-Route::delete('company/inspectors/{inspector_id}',[InspectorController::class,'destroy'])->middleware(['auth:sanctum']);
+// Route::get('company/inspectors',[InspectorController::class,'index'])->middleware(['auth:sanctum']);
+// Route::get('company/inspectors/{inspector_id}',[InspectorController::class,'show'])->middleware(['auth:sanctum']);
+// Route::post('company/inspectors',[InspectorController::class,'store'])->middleware(['auth:sanctum']);
+// Route::delete('company/inspectors/{inspector_id}',[InspectorController::class,'destroy'])->middleware(['auth:sanctum']);
+Route::apiResource('company/inspectors', InspectorController::class)->middleware('auth:sanctum');
 Route::put("projects/inspectors/{projectId}", [InspectorProjectController::class,'update'])->middleware(['auth:sanctum']);
 Route::apiResource("company/reviewers", ReviewerController::class)->middleware(['auth:sanctum']);
 Route::put("projects/reviewers/{projectId}", [ReviewerProjectController::class,'update'])->middleware(['auth:sanctum']);

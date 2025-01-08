@@ -32,6 +32,15 @@ class ReviewerController extends Controller
         return $this->success(201, "Reviewer added successfully", $reviewer);
     }
 
+    public function update(Request $request, Reviewer $reviewer)
+    {
+        if ($request->has('email')) {
+            $reviewer->update(['email' => $request->email]);
+            return $this->success(201, "reviewer updated successfully", $reviewer);
+        }
+        return $this->failed(402, 'You can update reviewer email only');
+    }
+
     public function show($id)
     {
         $reviewer = Reviewer::find($id);

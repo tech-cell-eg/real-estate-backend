@@ -28,7 +28,7 @@ class ClientPropertyController extends Controller
             File::create([
                 "property_id" => $property->id,
                 "path" => $path,
-                "url" => env("APP_URL") . "/storage/" . $path
+                "url" => config('app.url') . "/storage/" . $path
             ]);
         }
 

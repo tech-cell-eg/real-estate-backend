@@ -31,6 +31,14 @@ class InspectorController extends Controller
         $inspector = Inspector::create($data);
         return $this->success(201, "Inspector added successfully", $inspector);
     }
+    
+    public function update(Request $request, Inspector $inspector) {
+        if($request->has('email')) {
+            $inspector->update(['email' => $request->email]);
+            return $this->success(201, "Inspector updated successfully", $inspector);
+        }
+        return $this->failed(402, 'You can update inspector email only');
+    }
 
     public function show($id)
     {

@@ -19,27 +19,27 @@ class FileSeeder extends Seeder
             File::create([
                 'property_id' => $i,
                 'path' => "/default/images/property-front/$r.svg",
-                'url' => env('APP_URL') . "/default/images/property-front/$r.svg",
+                'url' => config('app.url') . "/default/images/property-front/$r.svg",
             ]);
             File::create([
                 'property_id' => $i,
                 'path' => "/default/images/property-rooms/1.svg",
-                'url' => env('APP_URL') . "/default/images/property-rooms/1.svg",
+                'url' => config('app.url') . "/default/images/property-rooms/1.svg",
             ]);
             File::create([
                 'property_id' => $i,
                 'path' => "/default/images/property-rooms/2.svg",
-                'url' => env('APP_URL') . "/default/images/property-rooms/2.svg",
+                'url' => config('app.url') . "/default/images/property-rooms/2.svg",
             ]);
             File::create([
                 'property_id' => $i,
                 'path' => "/default/images/property-rooms/3.svg",
-                'url' => env('APP_URL') . "/default/images/property-rooms/3.svg",
+                'url' => config('app.url') . "/default/images/property-rooms/3.svg",
             ]);
             File::create([
                 'property_id' => $i,
                 'path' => "/default/images/property-rooms/4.svg",
-                'url' => env('APP_URL') . "/default/images/property-rooms/4.svg",
+                'url' => config('app.url') . "/default/images/property-rooms/4.svg",
             ]);
         }
     }
