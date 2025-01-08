@@ -39,7 +39,6 @@ use App\Http\Controllers\InspectorProjectsController;
 
 use App\Http\Controllers\API\Profile\UpdateProfileController;
 use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
-use App\Http\Controllers\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\Company\inspector\InspectorCompanyController;
 use App\Http\Controllers\Company\inspector\InspectorProjectController;
 use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
