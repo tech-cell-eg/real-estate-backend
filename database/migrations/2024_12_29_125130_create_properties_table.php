@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string("city");
             $table->string("region");
             $table->text("description");
-            $table->integer("longitude");
-            $table->integer("latitude");
+            $table->float("longitude");
+            $table->float("latitude");
             $table->timestamps();
         });
     }

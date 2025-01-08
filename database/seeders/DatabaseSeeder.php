@@ -24,31 +24,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         $this->call([
+            CitiesAreasSeeder::class,
+            CompanySeeder::class,
+            InspectorSeeder::class,
+            ReviewerSeeder::class,
             ClientSeeder::class,
-            TermSeeder::class
+            PropertySeeder::class,
+            FileSeeder::class,
+            WalletSeeder::class,
+            TermSeeder::class,
+            CardSeeder::class,
+            ReportSeeder::class,
+            ProjectSeeder::class,
+            PaymentSeeder::class,
+            ProjectCommentSeeder::class
         ]);
-        // Client::factory(2)->create();
-        Property::factory(10)->create();
-        File::factory(20)->create();
-        Company::factory(10)->create();
-        Inspector::factory(3)->create();
-        Project::factory(20)->create();
-        Report::factory(20)->create();
-        $this->call([WalletSeeder::class, ProjectCommentSeeder::class]);
-        // Offer::factory(10)->create();
-        // Order::factory(10)->create();
-        // Card::factory(10)->create();
-        // Payment::factory(10)->create();
-        // $this->call([
-        //     PropertySeeder::class,
-        //     TermSeeder::class
-        // ]);
     }
 }

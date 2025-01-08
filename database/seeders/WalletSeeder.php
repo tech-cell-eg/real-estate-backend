@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\Inspector;
+use App\Models\Reviewer;
 use App\Models\Wallet;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,16 @@ class WalletSeeder extends Seeder
             Wallet::create([
                 'owner_id' => $inspector->id,
                 'owner_type' => 'inspector',
+                'current_balance' => fake()->numerify('#000'),
+                'outstanding_balance' => fake()->numerify('#00')
+            ]);
+        }
+
+        $reviewers = Reviewer::all();
+        foreach ($reviewers as $reviewer) {
+            Wallet::create([
+                'owner_id' => $reviewer->id,
+                'owner_type' => 'reviewer',
                 'current_balance' => fake()->numerify('#000'),
                 'outstanding_balance' => fake()->numerify('#00')
             ]);

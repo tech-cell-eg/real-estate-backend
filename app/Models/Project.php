@@ -45,6 +45,7 @@ class Project extends Model
     }
 
     function report() {
+
          return $this->belongsTo(Report::class);
     }
 }
