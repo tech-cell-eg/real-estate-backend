@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->decimal('review_fees', 8, 2);
-            $table->string('national_id')->unique();
-            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
+            $table->decimal('review_fees', 8, 2)->nullable();
+            $table->string('national_id')->unique()->nullable();
+            $table->foreignIdFor(City::class)->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('password');
             $table->string('certificate')->nullable();
