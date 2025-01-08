@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Company\reviewer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\AuthReviewer\RegisterReviewerRequest;
+use App\Http\Requests\Company\AddInspectorOrReviewerRequest;
 use App\Http\Requests\Company\Inspector\UpdateTeamRequest;
 use App\Models\Reviewer;
 use App\Traits\ApiResponse;
@@ -22,14 +23,12 @@ class ReviewerController extends Controller
         return $this->success(200, "All Reviewers data", $reviewers);
     }
 
-    public function store(Request $request)
+    public function store(AddInspectorOrReviewerRequest $request)
     {
-        $request->validate([
-            'reviewer_id' => 'required|exists:reviewers,id'
-        ]);
-        $reviewerID = $request->reviewer_id;
+        $data = $request->validated();
         $companyID = auth('api-company')->user()->id;
-        $reviewer = Reviewer::where('id' , $reviewerID)->update(['company_id' => $companyID]);
+        $data['company_id'] = $companyID;
+        $reviewer = Reviewer::create($data);
         return $this->success(201, "Reviewer added successfully", $reviewer);
     }
 

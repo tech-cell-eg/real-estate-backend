@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Company\inspector;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\AuthInspector\RegisterInspectorRequest;
+use App\Http\Requests\Company\AddInspectorOrReviewerRequest;
 use App\Http\Requests\Company\Inspector\UpdateTeamRequest;
 use App\Models\Inspector;
 use App\Traits\ApiResponse;
@@ -22,14 +23,12 @@ class InspectorController extends Controller
         return $this->success(200, "All inspectors data", $inspectors);
     }
 
-    public function store(Request $request)
+    public function store(AddInspectorOrReviewerRequest $request)
     {
-        $request->validate([
-            'inspector_id' => 'required|exists:inspectors,id'
-        ]);
-        $inspectorID = $request->inspector_id;
+        $data = $request->validated();
         $companyID = auth('api-company')->user()->id;
-        $inspector = Inspector::where('id' , $inspectorID)->update(['company_id' => $companyID]);
+        $data['company_id'] = $companyID;
+        $inspector = Inspector::create($data);
         return $this->success(201, "Inspector added successfully", $inspector);
     }
 

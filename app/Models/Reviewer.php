@@ -23,8 +23,8 @@ class Reviewer extends Authenticatable
         'password',
         'certificate',
         'terms_accepted',
-        'company_id'
-
+        'company_id',
+        'data'
     ];
 
     public function city(): BelongsTo
