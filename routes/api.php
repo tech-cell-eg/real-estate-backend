@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
 use App\Http\Controllers\API\Auth\Login\LoginController;
 use App\Http\Controllers\API\Auth\Logout\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
