@@ -16,6 +16,11 @@ class ReportController extends Controller
         return $this->success(200, 'report created successfully!', $reports);
     }
 
+    function show($id) {
+        $report = Report::findOrFail($id);
+        return $this->success(200, 'report found!', $report);
+    }
+
     function store(ReportRequest $request) {
         $request['inspector_id'] = auth('api-inspector')->id();
 

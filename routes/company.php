@@ -12,7 +12,6 @@ use App\Http\Controllers\API\Company\reviewer\ReviewerCompanyController;
 use App\Http\Controllers\API\Company\reviewer\ReviewerController;
 use App\Http\Controllers\API\Company\reviewer\ReviewerProjectController;
 use App\Http\Controllers\CompanyPaymentController;
-use App\Http\Controllers\ProjectCommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('company/projects/search/{status}', [ProjectsController::class, 'search']);
@@ -33,10 +32,5 @@ Route::put("projects/reviewers/{projectId}", [ReviewerProjectController::class, 
 Route::get('projects/search', [ProjectsController::class, 'search']);
 Route::post('projects/comments', [ProjectCommentsController::class, 'addComment']);
 Route::apiResource("company/projects", ProjectsController::class);
-Route::get('project-commeents/{id}', [ProjectCommentController::class, 'show'])
-  ->middleware('auth:sanctum');
-Route::post('project-commeents/{id}', [ProjectCommentController::class, 'store'])
-  ->middleware('auth:sanctum');
-
 Route::get('company-payments', [CompanyPaymentController::class, 'index'])
   ->middleware('auth:sanctum');
