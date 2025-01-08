@@ -41,7 +41,6 @@ use App\Http\Controllers\API\Profile\UpdateProfileController;
 use App\Http\Controllers\Company\reviewer\ReviewerCompanyController;
 use App\Http\Controllers\Company\inspector\InspectorCompanyController;
 
-use App\Http\Controllers\API\Auth\ResetPassword\ResetPasswordController;
 use App\Http\Controllers\API\Auth\ForgetPassword\ForgetPasswordController;
 use App\Http\Controllers\API\Auth\RegisterClient\RegisterClientIndividualController;
 use App\Http\Controllers\API\Auth\RegisterCompany\RegisterController as AuthCompanyRegisterController;
